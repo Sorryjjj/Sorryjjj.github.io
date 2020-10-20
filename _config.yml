@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 杰仔 Online
-subtitle: ''
+title: 杰仔的博客
+subtitle: '回忆是一条没有尽头的路'
 description: ''
 keywords:
 author: Jie Zhang
@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://jiezai.online
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
