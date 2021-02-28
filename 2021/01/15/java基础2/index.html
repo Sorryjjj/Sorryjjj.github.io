@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="java基础2"><meta name="keywords" content="Java"><meta name="author" content="Jie Zhang"><meta name="copyright" content="Jie Zhang"><title>java基础2 | 杰仔的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.8.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.8.2"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '4.2.0'
+} </script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="杰仔的博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#String"><span class="toc-number">1.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运算符"><span class="toc-number">2.</span> <span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#控制流程"><span class="toc-number">3.</span> <span class="toc-text">控制流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组"><span class="toc-number">4.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对象与类"><span class="toc-number">5.</span> <span class="toc-text">对象与类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java面向对象"><span class="toc-number">5.1.</span> <span class="toc-text">Java面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户自定义类"><span class="toc-number">5.2.</span> <span class="toc-text">用户自定义类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构造器"><span class="toc-number">5.2.1.</span> <span class="toc-text">构造器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用var声明局部变量"><span class="toc-number">5.2.2.</span> <span class="toc-text">用var声明局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用null引用"><span class="toc-number">5.2.3.</span> <span class="toc-text">使用null引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隐式参数与显式参数"><span class="toc-number">5.2.4.</span> <span class="toc-text">隐式参数与显式参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于类的访问权限"><span class="toc-number">5.2.5.</span> <span class="toc-text">基于类的访问权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#私有方法"><span class="toc-number">5.2.6.</span> <span class="toc-text">私有方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final实例字段"><span class="toc-number">5.2.7.</span> <span class="toc-text">final实例字段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM内存结构"><span class="toc-number">5.3.</span> <span class="toc-text">JVM内存结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#值传递"><span class="toc-number">5.4.</span> <span class="toc-text">值传递</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/03/12/8ZFkQA.jpg"></div><div class="author-info__name text-center">Jie Zhang</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/Sorryjjj" target="_blank" rel="noopener">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">16</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">7</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2020/03/12/8ZE4l4.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">杰仔的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">java基础2</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-01-15</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Java/">Java</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><ul>
+<li>从概念上讲，Java字符串就是unicode字符序列。</li>
+<li>Java没有内置的字符串类型，而是在标准java类库中提供了一个预定义类String。</li>
+<li>每个用双引号括起来的字符串都是String类的一个实例。</li>
+<li>不可变字符串：String类没有提供修改字符串中某个字符的方法，不能修改Java字符串中的单个字符。优点：编译器可以让字符串共享。</li>
+<li>构建字符串：有时候需要用许多较短的字符串构建字符串，例如按键输入或者文件中的单词，需要用到字符串构建器：StringBuilder</li>
+</ul>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h1 id="控制流程"><a href="#控制流程" class="headerlink" title="控制流程"></a>控制流程</h1><ul>
+<li>条件判断</li>
+<li>循环</li>
+</ul>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><ul>
+<li>声明数组：一旦创建数组后，就不能改变长度，若需要经常扩展数组的大小，则需要使用数组列表（array list）。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> Int[<span class="number">100</span>];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>访问数组元素</p>
+</li>
+<li><p>foreach循环：for ( variable : collection ) statement</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 循环打印a数组</span></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">int</span> element : a) </span><br><span class="line">	System.out.println(element);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>数组拷贝：在Java中，允许将一个数组变量拷贝到另一个数组变量，这时，两个变量将引用同一个数组（浅拷贝）。使用Arrays类的copyOf方法则可以实现深拷贝。</p>
+</li>
+<li><p>命令行参数：向main方法传递字符串，运行程序时，可以从命令行给main方法传递字符串参数，java className  args0 args1</p>
+</li>
+<li><p>数组排序：Arrays.sort</p>
+</li>
+</ul>
+<h1 id="对象与类"><a href="#对象与类" class="headerlink" title="对象与类"></a>对象与类</h1><h2 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h2><ul>
+<li>Java类及类的成员：属性、方法、构造器；代码块，内部类</li>
+<li>面向对象的三大特征：封装、继承、多态</li>
+<li>其他关键字：this、super、static、final、abstract、interface、package、import</li>
+</ul>
+<p>在Java语言范畴中，将功能、结构等都封装到类中，通过类的实例化，来调用具体的功能结构</p>
+<p>涉及到与前端、数据库交互时，前后端的结构在Java层面都体现为类、对象</p>
+<h2 id="用户自定义类"><a href="#用户自定义类" class="headerlink" title="用户自定义类"></a>用户自定义类</h2><h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><ul>
+<li>与类同名，在构造类的对象时，构造器会运行，从而将实例字段初始化为所希望的初始状态</li>
+<li>每个类可以有一个以上的构造器</li>
+<li>可以有多个参数，没有返回值</li>
+<li>总是伴随着new操作符一起调用</li>
+</ul>
+<h3 id="用var声明局部变量"><a href="#用var声明局部变量" class="headerlink" title="用var声明局部变量"></a>用var声明局部变量</h3><p>在Java 10中，如果可以从变量的初始值推导出它们的类型，那么可以用var声明局部变量，无须指定类型</p>
+<h3 id="使用null引用"><a href="#使用null引用" class="headerlink" title="使用null引用"></a>使用null引用</h3><p>在构造器中将null转为非null值，或者严格拒绝null参数（ Objects.requireNonNull() ）</p>
+<h3 id="隐式参数与显式参数"><a href="#隐式参数与显式参数" class="headerlink" title="隐式参数与显式参数"></a>隐式参数与显式参数</h3><h3 id="基于类的访问权限"><a href="#基于类的访问权限" class="headerlink" title="基于类的访问权限"></a>基于类的访问权限</h3><p>方法可以访问调用这个方法的对象的私有数据</p>
+<h3 id="私有方法"><a href="#私有方法" class="headerlink" title="私有方法"></a>私有方法</h3><p>private修饰</p>
+<h3 id="final实例字段"><a href="#final实例字段" class="headerlink" title="final实例字段"></a>final实例字段</h3><p>可以将实例字段定义为final，这样的字段必须在构造对象时初始化，也就是说，必须确保每个构造器执行之后，这个字段的值已经设置，并且之后不能再修改这个字段</p>
+<h2 id="JVM内存结构"><a href="#JVM内存结构" class="headerlink" title="JVM内存结构"></a><del>JVM内存结构</del></h2><h2 id="值传递"><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h2><p>Java中参数传递方式只有值传递</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Jie Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://jiezai.online/2021/01/15/java基础2/">http://jiezai.online/2021/01/15/java基础2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://jiezai.online">杰仔的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://s1.ax1x.com/2020/03/12/8ZmTgO.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2021/01/19/Java%E5%9F%BA%E7%A1%803/"><i class="fa fa-chevron-left">  </i><span>Java基础3</span></a></div><div class="next-post pull-right"><a href="/2021/01/10/Java/"><span>Java</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '7592534c7c52beaeac37',
+  clientSecret: 'd235cc6ca2447a48558833937d867ab824dfcfaf',
+  repo: 'Sorryjjj.github.io',
+  owner: 'Sorryjjj',
+  admin: 'Sorryjjj',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://s1.ax1x.com/2020/03/12/8ZE4l4.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2021 By Jie Zhang</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.8.2"></script><script src="/js/fancybox.js?version=1.8.2"></script><script src="/js/sidebar.js?version=1.8.2"></script><script src="/js/copy.js?version=1.8.2"></script><script src="/js/fireworks.js?version=1.8.2"></script><script src="/js/transition.js?version=1.8.2"></script><script src="/js/scroll.js?version=1.8.2"></script><script src="/js/head.js?version=1.8.2"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

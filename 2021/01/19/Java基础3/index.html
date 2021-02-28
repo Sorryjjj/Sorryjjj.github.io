@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Java基础3"><meta name="keywords" content="Java"><meta name="author" content="Jie Zhang"><meta name="copyright" content="Jie Zhang"><title>Java基础3 | 杰仔的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.8.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.8.2"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '4.2.0'
+} </script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="杰仔的博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#匿名对象"><span class="toc-number">1.</span> <span class="toc-text">匿名对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方法"><span class="toc-number">2.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#封装"><span class="toc-number">3.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#构造器"><span class="toc-number">4.</span> <span class="toc-text">构造器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaBean"><span class="toc-number">5.</span> <span class="toc-text">JavaBean</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UML类图"><span class="toc-number">6.</span> <span class="toc-text">UML类图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this"><span class="toc-number">7.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#package、import"><span class="toc-number">8.</span> <span class="toc-text">package、import</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#package"><span class="toc-number">8.1.</span> <span class="toc-text">package</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import"><span class="toc-number">8.2.</span> <span class="toc-text">import</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#继承"><span class="toc-number">9.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Object类"><span class="toc-number">10.</span> <span class="toc-text">Object类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重写"><span class="toc-number">11.</span> <span class="toc-text">重写</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#super"><span class="toc-number">12.</span> <span class="toc-text">super</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#子类对象实例化的过程"><span class="toc-number">13.</span> <span class="toc-text">子类对象实例化的过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多态"><span class="toc-number">14.</span> <span class="toc-text">多态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单元测试"><span class="toc-number">15.</span> <span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#包装类"><span class="toc-number">16.</span> <span class="toc-text">包装类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#static"><span class="toc-number">17.</span> <span class="toc-text">static</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#单例模式Singleton"><span class="toc-number">18.</span> <span class="toc-text">单例模式Singleton</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码块"><span class="toc-number">19.</span> <span class="toc-text">代码块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#final"><span class="toc-number">20.</span> <span class="toc-text">final</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抽象类和抽象方法"><span class="toc-number">21.</span> <span class="toc-text">抽象类和抽象方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#abstract"><span class="toc-number">21.1.</span> <span class="toc-text">abstract</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模板模式"><span class="toc-number">21.2.</span> <span class="toc-text">模板模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#接口"><span class="toc-number">22.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内部类"><span class="toc-number">23.</span> <span class="toc-text">内部类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#异常处理"><span class="toc-number">24.</span> <span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多线程"><span class="toc-number">25.</span> <span class="toc-text">多线程</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/03/12/8ZFkQA.jpg"></div><div class="author-info__name text-center">Jie Zhang</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/Sorryjjj" target="_blank" rel="noopener">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">16</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">7</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">4</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2020/03/12/8ZE4l4.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">杰仔的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Java基础3</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-01-19</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Java/">Java</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h1><p>指没有名字的对象，即只创建对象，但是不用变量来接收</p>
+<ul>
+<li>匿名对象具有对象的所有功能</li>
+<li>匿名对象只能调用一次</li>
+<li>匿名对象只在堆内存中开辟空间，而不存在栈内存的引用</li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ul>
+<li>重载：在同一个类中，允许存在一个以上的同名方法，只要它们的参数个数或者类型不同即可</li>
+<li>可变个数的形参：(String … args)</li>
+<li>方法参数的值传递机制：如果变量是基本数据类型，则传递的是变量的数据值；如果是引用数据类型，则传递的是变量的地址值</li>
+<li>递归</li>
+</ul>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>隐藏对象内部的复杂性，只对外公开简单的接口</p>
+<ul>
+<li>高内聚：类的内部数据操作细节自己完成，不允许外部干涉</li>
+<li>低耦合：仅对外暴露少量的方法用于使用</li>
+</ul>
+<p>权限修饰符：</p>
+<ul>
+<li>private：类内部</li>
+<li>缺省：同一个包</li>
+<li>protected：不同包的子类</li>
+<li>public：同一个工程</li>
+</ul>
+<h1 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h1><p>创建对象，初始化对象</p>
+<ul>
+<li>如果没有显式定义构造器，默认提供无参构造器</li>
+<li>定义构造器的格式：权限修饰符  类名 (形参列表) {}</li>
+<li>一个类中的多个构造器，彼此构成重载</li>
+<li>一旦显式定义构造器后，系统不再提供默认的无参构造器</li>
+</ul>
+<h1 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h1><p>是一种Java语言写成的可重用组件，指符合如下标准的Java类</p>
+<ul>
+<li>类是公共的</li>
+<li>有一个无参构造器</li>
+<li>有属性，且具有对应的get、set方法</li>
+</ul>
+<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><h1 id="this"><a href="#this" class="headerlink" title="this"></a>this</h1><p>this调用构造器</p>
+<ul>
+<li>在类的构造器中，可以显式的使用“this(形参列表)”调用当前类的其他构造器</li>
+<li>必须声明在当前构造器的首行</li>
+<li>构造器内部，最多只能声明一个“this(形参列表)”用来调用其他构造器</li>
+</ul>
+<h1 id="package、import"><a href="#package、import" class="headerlink" title="package、import"></a>package、import</h1><h2 id="package"><a href="#package" class="headerlink" title="package"></a>package</h2><ul>
+<li>为了更好的管理项目中的类，提出包的概念</li>
+<li>使用package声明类或接口所属的包</li>
+<li>同一个包下，不能命名同名的接口或类</li>
+</ul>
+<h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><ul>
+<li>导入指定包下的类或接口</li>
+<li>声明在包和类的声明</li>
+<li>import static: 导入指定类或接口中的静态结构</li>
+</ul>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><ul>
+<li>减少代码冗余，提高复用性</li>
+<li>便于功能扩展</li>
+<li>为多态提供前提</li>
+</ul>
+<h1 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h1><p>如果没有显式的声明一个类的父类，则此类继承于java.lang.Object类</p>
+<h1 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h1><p>在子类中对继承于父类的方法进行重写</p>
+<ul>
+<li>方法名和形参列表相同</li>
+<li>子类中重写的方法的权限修饰符不能小于父类中被重写方法的权限修饰符</li>
+<li>子类不能重写父类中声明为private的方法</li>
+<li>返回值类型：若被重写方法返回值类型为void，则重写方法只能返回void；若被重写方法返回A类型，则重写方法可以返回A类型或A的子类</li>
+<li>静态方法无法被重写</li>
+</ul>
+<h1 id="super"><a href="#super" class="headerlink" title="super"></a>super</h1><p>指向父类的引用</p>
+<h1 id="子类对象实例化的过程"><a href="#子类对象实例化的过程" class="headerlink" title="子类对象实例化的过程"></a>子类对象实例化的过程</h1><p>从结果看：子类继承父类后，就获得了父类的属性和方法</p>
+<p>从过程看：通过子类的构造器创建对象时，会直接或间接的调用父类构造器，直到Object类的构造器，从而在内存中加载了父类的结构，子类可以调用，但不对外暴露</p>
+<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><p>可以理解为事物的多种形态</p>
+<p>对象的多态性：父类的引用指向子类的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Father fa = <span class="keyword">new</span> Son();</span><br></pre></td></tr></table></figure>
+
+<p>多态的使用：当调用子父类同名同参数的方法时，实际执行的是子类重写父类的方法</p>
+<p>前提：类的继承与方法的重写</p>
+<p>只适用于方法，不能用于属性</p>
+<p>虚拟方法：在多态情况下，将此时父类的方法称为虚拟方法，父类根据赋给它的不同子类对象，动态调用子类的方法</p>
+<p>向下转型：可以使用强制类型转换调用子类特有的方法</p>
+<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><h1 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h1><p>针对八种基本数据类型定义相应的引用类型</p>
+<p>自动装箱与自动拆箱</p>
+<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><ul>
+<li>静态变量随着类的加载而加载，可以通过类.静态变量调用</li>
+<li>静态变量的加载早于对象的创建</li>
+<li>类只会加载一次，静态变量在内存中只会保存一份，存在于方法区的静态域中</li>
+</ul>
+<h1 id="单例模式Singleton"><a href="#单例模式Singleton" class="headerlink" title="单例模式Singleton"></a>单例模式Singleton</h1><p>在系统中，某个类只存在一个实例对象</p>
+<p>减少性能开销</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载时间长，线程安全</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bank</span> </span>&#123;</span><br><span class="line">  <span class="comment">//私有化类的构造器</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Bank</span> <span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">  <span class="comment">//内部创建类的对象</span></span><br><span class="line">  <span class="keyword">private</span> Bank instance = <span class="keyword">new</span> Bank();</span><br><span class="line">  <span class="comment">//提供公共的方法，返回类的对象</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Bank <span class="title">getInstance</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//延迟对象的创建，线程不安全</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Order</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">  <span class="keyword">private</span> Order instance = <span class="keyword">null</span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Order <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">      instance = <span class="keyword">new</span> Order;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h1><ul>
+<li>用来初始化类、对象</li>
+<li>如果有修饰，只能用static</li>
+<li>静态代码块：随着类的加载而执行，只执行一次；若有多个，则按声明顺序执行</li>
+<li>非静态代码块：随着对象的创建而执行，每创建对象都执行一次（初始化对象属性）</li>
+</ul>
+<h1 id="final"><a href="#final" class="headerlink" title="final"></a>final</h1><ul>
+<li>final修饰的类无法被继承</li>
+<li>final修饰的方法无法被重写</li>
+<li>final修饰的变量无法被修改</li>
+</ul>
+<h1 id="抽象类和抽象方法"><a href="#抽象类和抽象方法" class="headerlink" title="抽象类和抽象方法"></a>抽象类和抽象方法</h1><p>在面向对象的概念中，所有的对象都是通过类来描绘的，但是反过来，并不是所有的类都是用来描绘对象的，如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类。</p>
+<p>Java允许类设计者指定：超类声明一个方法但不实现，该方法的实现由子类提供，这样的方法称为抽象方法，有一个或更多抽象方法的类叫做抽象类</p>
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><ul>
+<li>abstract修饰的类无法实例化，即为抽象类</li>
+<li>抽象类中一定有构造器，方便子类实例化时调用</li>
+<li>abstract修饰的方法：抽象方法，没有方法体</li>
+<li>包含抽象方法的类，一定是抽象类</li>
+<li>子类重写了父类中所有的抽象方法后，才能被实例化；若没有全部重写，则该子类也为抽象类，需要用abstract修饰</li>
+</ul>
+<p>注意点：</p>
+<ul>
+<li>不能用于修饰属性、构造器、私有方法、静态方法、final的方法和类</li>
+</ul>
+<h2 id="模板模式"><a href="#模板模式" class="headerlink" title="模板模式"></a>模板模式</h2><p>一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。这种类型的设计模式属于行为型模式</p>
+<p>抽象类体现的就是一种模板模式的设计</p>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Jie Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://jiezai.online/2021/01/19/Java基础3/">http://jiezai.online/2021/01/19/Java基础3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://jiezai.online">杰仔的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://s1.ax1x.com/2020/03/12/8ZmTgO.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2021/01/29/Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"><i class="fa fa-chevron-left">  </i><span>Java 多线程</span></a></div><div class="next-post pull-right"><a href="/2021/01/15/java%E5%9F%BA%E7%A1%802/"><span>java基础2</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '7592534c7c52beaeac37',
+  clientSecret: 'd235cc6ca2447a48558833937d867ab824dfcfaf',
+  repo: 'Sorryjjj.github.io',
+  owner: 'Sorryjjj',
+  admin: 'Sorryjjj',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://s1.ax1x.com/2020/03/12/8ZE4l4.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2021 By Jie Zhang</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.8.2"></script><script src="/js/fancybox.js?version=1.8.2"></script><script src="/js/sidebar.js?version=1.8.2"></script><script src="/js/copy.js?version=1.8.2"></script><script src="/js/fireworks.js?version=1.8.2"></script><script src="/js/transition.js?version=1.8.2"></script><script src="/js/scroll.js?version=1.8.2"></script><script src="/js/head.js?version=1.8.2"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
