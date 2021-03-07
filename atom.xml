@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jiezai.online/"/>
-  <updated>2021-02-28T14:27:10.171Z</updated>
+  <updated>2021-03-07T15:33:24.462Z</updated>
   <id>http://jiezai.online/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 网络编程</title>
+    <link href="http://jiezai.online/2021/03/06/Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    <id>http://jiezai.online/2021/03/06/Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</id>
+    <published>2021-03-06T07:32:32.000Z</published>
+    <updated>2021-03-07T15:33:24.462Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>TCP/IP  C/S</p><h2 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h2><ul><li>ip</li><li>端口号</li><li>通信协议</li></ul><h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><ul><li>唯一定位一台网络上计算机</li><li>127.0.0.1：localhost</li><li>IP地址分类<ul><li>IPv4/IPv6</li><li>公网（互联网）/私网（局域网）<ul><li>ABCD类</li><li>192.168.xx.xx</li></ul></li></ul></li><li>域名</li></ul><h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>端口表示计算机上一个程序的进程</p><ul><li>不同的进程有不同的端口号用来区分软件</li><li>被规定为0～65536：TCP、UDP各65536</li><li>端口分类<ul><li>公有端口0～1023<ul><li>HTTP：80</li><li>HTTPS：443</li><li>FTP：21</li></ul></li><li>程序注册端口：1024～49151，分配用户或者程序<ul><li>Tomcat</li><li>mysql</li><li>oracle</li></ul></li><li>动态、私有</li></ul></li></ul><h2 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h2><h2 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h2><h2 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h2><p>Socket是一个抽象概念，一个应用程序通过一个Socket来建立一个远程连接，而Socket内部通过TCP/IP协议把数据传输到网络</p><p>一个Socket就是由IP地址和端口号（范围是0～65535）组成，可以把Socket简单理解为IP地址加端口号</p><p>Socket连接成功地在服务器端和客户端之间建立后：</p><ul><li>对服务器端来说，它的Socket是指定的IP地址和指定的端口号；</li><li>对客户端来说，它的Socket是它所在计算机的IP地址和一个由操作系统分配的随机端口号。</li></ul><p>Java标准库提供了<code>ServerSocket</code>来实现对指定IP和指定端口的监听</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Server</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        ServerSocket ss = <span class="keyword">new</span> ServerSocket(<span class="number">6666</span>); </span><br><span class="line">        System.out.println(<span class="string">"server is running..."</span>);</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            Socket sock = ss.accept();</span><br><span class="line">            System.out.println(<span class="string">"connected from "</span> + sock.getRemoteSocketAddress());</span><br><span class="line">            Thread t = <span class="keyword">new</span> Handler(sock);</span><br><span class="line">            t.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>TCP是一种基于流的协议，因此，Java标准库使用<code>InputStream</code>和<code>OutputStream</code>来封装Socket的数据流</p><h2 id="HTTP-HTTPS"><a href="#HTTP-HTTPS" class="headerlink" title="HTTP/HTTPS"></a>HTTP/HTTPS</h2><h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><p>免费的开放源代码的Servlet容器，核心组件为</p><ul><li>Connector：负责接收和反馈外部请求的连接器</li><li>Container：负责处理请求的容器</li></ul><p>连接器和容器相辅相成，一起构成了基本的 web 服务 Service</p><p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gobrgplkv9j30ql056q2y.jpg" alt="preview"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;网络编程&quot;&gt;&lt;a href=&quot;#网络编程&quot; class=&quot;headerlink&quot; title=&quot;网络编程&quot;&gt;&lt;/a&gt;网络编程&lt;/h1&gt;&lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h
+      
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://jiezai.online/categories/Java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Java 注解与反射</title>
