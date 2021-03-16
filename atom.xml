@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jiezai.online/"/>
-  <updated>2021-03-12T10:20:30.686Z</updated>
+  <updated>2021-03-16T14:59:48.808Z</updated>
   <id>http://jiezai.online/</id>
   
   <author>
@@ -15,6 +15,59 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网络层 IP</title>
+    <link href="http://jiezai.online/2021/03/16/%E7%BD%91%E7%BB%9C%E5%B1%82-IP/"/>
+    <id>http://jiezai.online/2021/03/16/%E7%BD%91%E7%BB%9C%E5%B1%82-IP/</id>
+    <published>2021-03-16T14:59:12.000Z</published>
+    <updated>2021-03-16T14:59:48.808Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="TCP-IP协议栈"><a href="#TCP-IP协议栈" class="headerlink" title="TCP/IP协议栈"></a>TCP/IP协议栈</h1><h2 id="IP数据报格式"><a href="#IP数据报格式" class="headerlink" title="IP数据报格式"></a>IP数据报格式</h2><p>首部 + 数据部分（TCP、UDP段）</p><p>首部：固定部分+可变部分</p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1gom2n03jtnj20ji092t9k.jpg" alt=""></p><ul><li>版本：IPv4 / IPv6</li><li>首部长度：单位是4B，最小长度为5</li><li>区分服务：期望获得哪种类型的服务</li><li>总长度：首部+数据</li><li>生存时间TTL：IP分组保质期，经过一个路由器-1，为0则丢弃</li><li>协议：数据部分的协议（6：TCP，17：UDP）</li><li>首部检验和：只检验首部</li><li>IP地址</li><li>可选字段：用来支持排错、测量以及安全等措施</li><li>填充：全0</li></ul><h2 id="IP数据报分片"><a href="#IP数据报分片" class="headerlink" title="IP数据报分片"></a>IP数据报分片</h2><p>MTU：最大传送单元，链路层数据报能承载的最大数据量，以太网的MTU为1500字节</p><ul><li>标识：同一数据报的分片使用同一标识</li><li>标志：3位，只有2位有意义，中间位（DF，Don’t Fragment)（1禁止/0允许分片），最低位(MF:More Fragment)（1还有分片/0代表最后一片）</li><li>片偏移：某片在原分组中的相对位置，以8B为单位</li></ul><h2 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h2><p>IP地址：连接到因特网的每台主机（或路由器）都分配一个32比特的全球唯一标识符</p><h3 id="网络地址转换NAT"><a href="#网络地址转换NAT" class="headerlink" title="网络地址转换NAT"></a>网络地址转换NAT</h3><p>路由器对目的地址是私有IP地址的数据报一律不进行转发</p><p>NAT指通过将专用网络地址转换为公用地址</p><p>在专用网连接到因特网的路由器上安装NAT软件，称为NAT路由器，至少有一个有效的外部全球IP地址</p><p>NAT转换表：本地地址与全球地址互相转换</p><h3 id="子网掩码与子网划分"><a href="#子网掩码与子网划分" class="headerlink" title="子网掩码与子网划分"></a>子网掩码与子网划分</h3><p>规定：所有的网络必须使用子网掩码</p><ul><li>两级IP地址：网络号+主机号（利用率低，不够灵活）</li><li>三级IP地址：网络号+子网号+主机号（对外表现为一个网络）<ul><li>C类地址子网掩码：255.255.255.0，（11111111 11111111 11111111 00000000）与IP地址逐位相与，得到子网网络地址</li></ul></li></ul><h3 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h3><p><strong>地址解析协议</strong></p><p>无论网络层使用什么协议，在实际网络的链路上传送数据帧时，最终必须使用硬件地址</p><p>完成IP地址到MAC地址的映射</p><p>每台主机都设有一个ARP高速缓存，用来存放本局域网各主机和路由器的IP地址到MAC地址的映射表，ARP表，动态维护</p><p>执行过程：</p><ol><li>检查ARP高速缓存，有对应表项则写入MAC帧</li><li>没有则广播ARP请求分组，同一局域网中所有主机都能收到该请求</li><li>目的主机收到后向源主机单播一个ARP响应分组，源主机收到后将此映射写入ARP缓存</li></ol><h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p><strong>动态主机配置协议</strong></p><p>给主机动态分配IP地址</p><p>DHCP是应用层协议，使用C/S方式，通过广播方式进行交互，基于UDP</p><p>主机可以从服务器动态获取IP地址、子网掩码、默认网关、DNS服务器名称，允许地址重用</p><h3 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h3><p>让主机或路由器报告差错和异常情况</p><h2 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h2><h2 id="移动IP"><a href="#移动IP" class="headerlink" title="移动IP"></a>移动IP</h2><h2 id="网络层设备"><a href="#网络层设备" class="headerlink" title="网络层设备"></a>网络层设备</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;TCP-IP协议栈&quot;&gt;&lt;a href=&quot;#TCP-IP协议栈&quot; class=&quot;headerlink&quot; title=&quot;TCP/IP协议栈&quot;&gt;&lt;/a&gt;TCP/IP协议栈&lt;/h1&gt;&lt;h2 id=&quot;IP数据报格式&quot;&gt;&lt;a href=&quot;#IP数据报格式&quot; class=&quot;he
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://jiezai.online/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="计算机网络 网络层 IP" scheme="http://jiezai.online/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82-IP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网络层</title>
+    <link href="http://jiezai.online/2021/03/15/%E7%BD%91%E7%BB%9C%E5%B1%82/"/>
+    <id>http://jiezai.online/2021/03/15/%E7%BD%91%E7%BB%9C%E5%B1%82/</id>
+    <published>2021-03-15T14:23:57.000Z</published>
+    <updated>2021-03-16T15:19:33.460Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><p>主要任务是把分组从源端传到目的端，为分组交换网上的不同主机提供通信服务</p><p>传输单位是<strong>数据报</strong></p><p>功能：</p><ul><li>路由选择与分组转发<ul><li>路由选择：按照复杂的分布式算法，根据从各相邻路由器所得到的关于整个网络拓扑的变化情况，动态改变所选择的路有</li><li>分组转发：路由器根据转发表将用户的IP数据报从合适的端口转发出去</li></ul></li><li>异构网络互联</li><li>拥塞控制<ul><li>因出现过量的分组而引起网络性能下降的现象称为拥塞</li><li>控制方法：<ul><li>开环控制：静态，在设计网络时，事先将有关发生拥塞的因素考虑周到</li><li>闭环控制：动态，事先不考虑，采用监测网络系统去见识，及时检测哪里发生了拥塞，将拥塞信息发送到合适的地方</li></ul></li></ul></li></ul><h1 id="数据交换方式"><a href="#数据交换方式" class="headerlink" title="数据交换方式"></a>数据交换方式</h1><h2 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h2><p><strong>特点：独占资源</strong></p><ol><li>建立连接（呼叫/电路建立）</li><li>通信 </li><li>释放连接（拆除电路）</li></ol><p><strong>优点</strong></p><ul><li>通信时延小</li><li>有序传输</li><li>没有冲突</li><li>实时性强</li></ul><p><strong>缺点</strong></p><ul><li>建立连接时间长</li><li>线路独占，使用效率低</li><li>灵活性差</li><li>无差错控制能力</li></ul><p>如电话网络</p><h2 id="报文交换"><a href="#报文交换" class="headerlink" title="报文交换"></a>报文交换</h2><p>报文：源应用发送的信息整体</p><p>通过交换设备进行存储转发，链路空闲时发送</p><p><strong>优点</strong></p><ul><li>无需建立连接</li><li>存储转发，动态分配线路</li><li>线路可靠性较高</li><li>线路利用率高</li><li>多目标服务</li></ul><p><strong>缺点</strong></p><ul><li>有存储转发时延</li><li>报文大小补丁，需要网络节点有较大缓存空间</li></ul><h2 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h2><p>分组：将大的数据块（报文）分割成小的数据块</p><p>相对于报文交换，存储管理更容易，但是需要传输额外的信息量，乱序到达目的主机时，要对分组排序重组</p><h2 id="虚电路"><a href="#虚电路" class="headerlink" title="虚电路"></a>虚电路</h2><p>一条源主机到目的主机类似于电路的路径（逻辑链接），路径上所有节点都要维持这条虚电路的建立，都维持一张虚电路表，每一项纪录了一个打开的虚电路的信息</p><p>每个分组携带虚电路号</p><p>虚电路将数据报方式和电路交换方式结合，以发挥两者优点</p><h1 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h1><p>路由表/转发表</p><table><thead><tr><th>目的网络IP地址</th><th>子网掩码</th><th>下一跳IP地址</th><th>接口</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table><p>最佳路由：相对于某一种特定要求下得出的较为合理的选择</p><h2 id="静态路由算法"><a href="#静态路由算法" class="headerlink" title="静态路由算法"></a>静态路由算法</h2><p>管理员手工配置路由信息</p><p>在负荷稳定、拓扑变化不大的网络中运行效果好，广泛应用于高度安全性的军事网络和较小的商业网络</p><p>缺点：路由更新慢，不适用大型网络</p><h2 id="动态路由算法"><a href="#动态路由算法" class="headerlink" title="动态路由算法"></a>动态路由算法</h2><p>自适应路由算法</p><p>路由器之间彼此交换信息，按照路由算法优化出路由表项</p><p>优点：路由更新快，适用大型网络，及时响应链路费用或网络拓扑变化</p><p>缺点：算法复杂，增加网络负担</p><ul><li>全局性：链路状态路由算法 OSPF （所有路由器掌握完整的网络拓扑和链路费用信息）</li><li>分散性：距离向量路由算法 RIP（路由器只掌握物理项链的邻居及链路费用）</li></ul><h2 id="层次路由"><a href="#层次路由" class="headerlink" title="层次路由"></a>层次路由</h2><p>自治系统AS：在单一的技术管理下的一组路由器</p><p>路由选择协议：</p><ul><li>内部网关协议IGP：单个AS内使用 RIP OSPF</li><li>外部网关协议EGP：AS之间使用</li></ul><h1 id="TCP-IP协议栈"><a href="#TCP-IP协议栈" class="headerlink" title="TCP/IP协议栈"></a>TCP/IP协议栈</h1><h2 id="IP数据报格式"><a href="#IP数据报格式" class="headerlink" title="IP数据报格式"></a>IP数据报格式</h2><p>首部 + 数据部分（TCP、UDP段）</p><p>首部：固定部分+可变部分</p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1gom2n03jtnj20ji092t9k.jpg" alt=""></p><ul><li>版本：IPv4 / IPv6</li><li>首部长度：单位是4B，最小长度为5</li><li>区分服务：期望获得哪种类型的服务</li><li>总长度：首部+数据</li><li>生存时间TTL：IP分组保质期，经过一个路由器-1，为0则丢弃</li><li>协议：数据部分的协议（6：TCP，17：UDP）</li><li>首部检验和：只检验首部</li><li>IP地址</li><li>可选字段：用来支持排错、测量以及安全等措施</li><li>填充：全0</li></ul><h2 id="IP数据报分片"><a href="#IP数据报分片" class="headerlink" title="IP数据报分片"></a>IP数据报分片</h2><p>MTU：最大传送单元，链路层数据报能承载的最大数据量，以太网的MTU为1500字节</p><ul><li>标识：同一数据报的分片使用同一标识</li><li>标志：3位，只有2位有意义，中间位（DF，Don’t Fragment)（1禁止/0允许分片），最低位(MF:More Fragment)（1还有分片/0代表最后一片）</li><li>片偏移：某片在原分组中的相对位置，以8B为单位</li></ul><h2 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h2><p>IP地址：连接到因特网的每台主机（或路由器）都分配一个32比特的全球唯一标识符</p><h3 id="网络地址转换NAT"><a href="#网络地址转换NAT" class="headerlink" title="网络地址转换NAT"></a>网络地址转换NAT</h3><p>路由器对目的地址是私有IP地址的数据报一律不进行转发</p><p>NAT指通过将专用网络地址转换为公用地址</p><p>在专用网连接到因特网的路由器上安装NAT软件，称为NAT路由器，至少有一个有效的外部全球IP地址</p><p>NAT转换表：本地地址与全球地址互相转换</p><h3 id="子网掩码与子网划分"><a href="#子网掩码与子网划分" class="headerlink" title="子网掩码与子网划分"></a>子网掩码与子网划分</h3><p>规定：所有的网络必须使用子网掩码</p><ul><li>两级IP地址：网络号+主机号（利用率低，不够灵活）</li><li>三级IP地址：网络号+子网号+主机号（对外表现为一个网络）<ul><li>C类地址子网掩码：255.255.255.0，（11111111 11111111 11111111 00000000）与IP地址逐位相与，得到子网网络地址</li></ul></li></ul><h3 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h3><p><strong>地址解析协议</strong></p><p>无论网络层使用什么协议，在实际网络的链路上传送数据帧时，最终必须使用硬件地址</p><p>完成IP地址到MAC地址的映射</p><p>每台主机都设有一个ARP高速缓存，用来存放本局域网各主机和路由器的IP地址到MAC地址的映射表，ARP表，动态维护</p><p>执行过程：</p><ol><li>检查ARP高速缓存，有对应表项则写入MAC帧</li><li>没有则广播ARP请求分组，同一局域网中所有主机都能收到该请求</li><li>目的主机收到后向源主机单播一个ARP响应分组，源主机收到后将此映射写入ARP缓存</li></ol><h3 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h3><p><strong>动态主机配置协议</strong></p><p>给主机动态分配IP地址</p><p>DHCP是应用层协议，使用C/S方式，通过广播方式进行交互，基于UDP</p><p>主机可以从服务器动态获取IP地址、子网掩码、默认网关、DNS服务器名称，允许地址重用</p><h3 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h3><p>让主机或路由器报告差错和异常情况</p><h2 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h2><h2 id="移动IP"><a href="#移动IP" class="headerlink" title="移动IP"></a>移动IP</h2><h2 id="网络层设备"><a href="#网络层设备" class="headerlink" title="网络层设备"></a>网络层设备</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;网络层&quot;&gt;&lt;a href=&quot;#网络层&quot; class=&quot;headerlink&quot; title=&quot;网络层&quot;&gt;&lt;/a&gt;网络层&lt;/h1&gt;&lt;p&gt;主要任务是把分组从源端传到目的端，为分组交换网上的不同主机提供通信服务&lt;/p&gt;
+&lt;p&gt;传输单位是&lt;strong&gt;数据报&lt;/stron
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://jiezai.online/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="计算机网络" scheme="http://jiezai.online/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring</title>
