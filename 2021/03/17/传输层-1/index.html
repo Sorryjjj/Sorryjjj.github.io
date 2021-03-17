@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="传输层"><meta name="keywords" content=""><meta name="author" content="Jie Zhang"><meta name="copyright" content="Jie Zhang"><title>传输层 | 杰仔的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.8.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.8.2"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '4.2.0'
+} </script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="杰仔的博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#传输层"><span class="toc-number">1.</span> <span class="toc-text">传输层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输层的寻址与端口"><span class="toc-number">2.</span> <span class="toc-text">传输层的寻址与端口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#端口"><span class="toc-number">2.1.</span> <span class="toc-text">端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#端口号"><span class="toc-number">2.2.</span> <span class="toc-text">端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#套接字"><span class="toc-number">2.3.</span> <span class="toc-text">套接字</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDP"><span class="toc-number">3.</span> <span class="toc-text">UDP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP"><span class="toc-number">4.</span> <span class="toc-text">TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP报文段"><span class="toc-number">4.1.</span> <span class="toc-text">TCP报文段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP连接管理"><span class="toc-number">4.2.</span> <span class="toc-text">TCP连接管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#连接"><span class="toc-number">4.2.1.</span> <span class="toc-text">连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#释放"><span class="toc-number">4.2.2.</span> <span class="toc-text">释放</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可靠传输"><span class="toc-number">4.3.</span> <span class="toc-text">可靠传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流量控制"><span class="toc-number">4.4.</span> <span class="toc-text">流量控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥塞控制"><span class="toc-number">4.5.</span> <span class="toc-text">拥塞控制</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/03/12/8ZFkQA.jpg"></div><div class="author-info__name text-center">Jie Zhang</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/Sorryjjj" target="_blank" rel="noopener">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">22</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">9</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">6</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2020/03/12/8ZE4l4.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">杰仔的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">传输层</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-03-17</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1><p>功能：</p>
+<ul>
+<li>为应用层提供通信服务，使用网络层的服务</li>
+<li>提供进程和进程之间的逻辑通信（网络层提供主机之间的逻辑通信）</li>
+<li>复用和分用<ul>
+<li>复用：发送方不同的应用进程都可使用同一个传输层协议传输数据</li>
+<li>分用：接收方的传输层在剥去报文的首部后能够把数据正确交付到目的应用进程</li>
+</ul>
+</li>
+<li>对收到的报文进行差错检测（首部和数据部分）</li>
+<li>提供两种传输协议<ul>
+<li>TCP</li>
+<li>UDP</li>
+</ul>
+</li>
+</ul>
+<h1 id="传输层的寻址与端口"><a href="#传输层的寻址与端口" class="headerlink" title="传输层的寻址与端口"></a>传输层的寻址与端口</h1><h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>应用层的各种应用进程将其数据通过端口向下交付给传输层，以及让传输层知道应当将其报文段中的数据向上通过端口交付给应用层相应的进程</p>
+<h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2><p>应用进程通过端口号进行标识，长度为16bit</p>
+<p>只具有本地意义</p>
+<ul>
+<li>服务端使用<ul>
+<li>熟知端口号（0 ～ 1023）：给TCP/IP最重要的一些应用程序，让所以用户都知道</li>
+<li>登记端口号（1024 -～49151）：其他</li>
+</ul>
+</li>
+<li>客户端使用（49152 ～ 65535）：仅在客户进程运行时才动态选择</li>
+</ul>
+<h2 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h2><p>主机IP地址+端口号</p>
+<p>唯一的标识网络中的一台主机及其上的一个应用</p>
+<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><p><strong>无连接非可靠的传输层协议</strong></p>
+<ul>
+<li>减少开销和发送数据的时延</li>
+<li>使用最大努力交付，不保证可靠交付</li>
+<li>面向报文，适合一次性传输少量数据的网络应用</li>
+<li>一次发一个完整的报文</li>
+<li>无拥塞控制</li>
+<li>首部开销小，8B</li>
+</ul>
+<p>UDP报头由4个域组成，其中每个域各占用2个字节，具体包括源端口号、目标端口号、数据包长度、校验值。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gon9q4ezmzj30f805pq3u.jpg" alt="preview"></p>
+<h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><p><strong>面向连接的传输层协议</strong></p>
+<p>特点</p>
+<h2 id="TCP报文段"><a href="#TCP报文段" class="headerlink" title="TCP报文段"></a>TCP报文段</h2><p><img src="https://tva1.sinaimg.cn/large/008eGmZEgy1gona2wypgtj30dw095jrv.jpg" alt="preview"></p>
+<h2 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h2><p>使运输连接的建立和释放都能正常进行</p>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><ol>
+<li>客户端发送<strong>连接请求报文段</strong>，无应用层数据，SYN=1，seq=x（随机）</li>
+<li>服务端为该TCP连接分配缓存和变量，并向客户端返回<strong>确认报文段</strong>，允许连接，无应用层数据，SYN=1，ACK=1，seq=y（随机），ack=x+1</li>
+<li>客户端收到确认报文，为该TCP连接分配缓存和变量，并向服务端返回确认的确认，可以携带数据，SYN=0，ACK=1，seq=x+1，ack=y+1</li>
+</ol>
+<p>SYN洪范攻击</p>
+<h3 id="释放"><a href="#释放" class="headerlink" title="释放"></a>释放</h3><ol>
+<li>客户端发送<strong>连接释放报文段</strong>，停止发送数据，主动关闭TCP连接</li>
+<li>服务端收到连接释放报文段，发出确认，客户端到服务端方向的连接就释放了，TCP处于半关闭状态</li>
+<li>服务器发出连接释放报文段</li>
+<li>客户端收到连接释放报文段，发出确认，等到时间等待计时器设置的2MSL（最长报文段寿命），连接彻底关闭</li>
+</ol>
+<h2 id="可靠传输"><a href="#可靠传输" class="headerlink" title="可靠传输"></a>可靠传输</h2><p>使用校验、序号、确认和重传等机制</p>
+<h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h2><p>基于滑动窗口协议的流量控制机制</p>
+<h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Jie Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://jiezai.online/2021/03/17/传输层-1/">http://jiezai.online/2021/03/17/传输层-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://jiezai.online">杰仔的博客</a>！</span></div></div><div class="post-meta__tag-list"></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://s1.ax1x.com/2020/03/12/8ZmTgO.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="next-post pull-right"><a href="/2021/03/17/%E5%BA%94%E7%94%A8%E5%B1%82/"><span>应用层</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '7592534c7c52beaeac37',
+  clientSecret: 'd235cc6ca2447a48558833937d867ab824dfcfaf',
+  repo: 'Sorryjjj.github.io',
+  owner: 'Sorryjjj',
+  admin: 'Sorryjjj',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://s1.ax1x.com/2020/03/12/8ZE4l4.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2021 By Jie Zhang</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.8.2"></script><script src="/js/fancybox.js?version=1.8.2"></script><script src="/js/sidebar.js?version=1.8.2"></script><script src="/js/copy.js?version=1.8.2"></script><script src="/js/fireworks.js?version=1.8.2"></script><script src="/js/transition.js?version=1.8.2"></script><script src="/js/scroll.js?version=1.8.2"></script><script src="/js/head.js?version=1.8.2"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
