@@ -134,7 +134,9 @@ cdn:
 # ---------------
 avatar: https://s1.ax1x.com/2020/03/12/8ZFkQA.jpg
 
-top_img: https://s1.ax1x.com/2020/03/12/8ZE4l4.jpg # false or url of img
+# top_img: https://s1.ax1x.com/2020/03/12/8ZE4l4.jpg # false or url of img
+top_img: https://tva1.sinaimg.cn/large/008eGmZEly1gp900j27qej31hc0u0q6s.jpg # false or url of img
+
 
 top_img_height: 60 # best range: 60 - 100
 
@@ -223,8 +225,8 @@ disqus:
 
 gitalk:
   enable: true
-  client_id: 237d143a2bb89a2d9488
-  client_secret: 8d74f6825117f07d3becf1599eebf0a58d466b15
+  client_id: 7592534c7c52beaeac37
+  client_secret: d235cc6ca2447a48558833937d867ab824dfcfaf
   repo: Sorryjjj.github.io
   owner: Sorryjjj
   admin: Sorryjjj

@@ -1,32 +1,14 @@
 ---
 title: n皇后
-date: 2020-04-20 22:26:11
+date: 2020-10-20 19:47:52
 tags:
 categories:
 ---
 
+n皇后问题
 
 
 ```c++
-
-
-#include <cstdio>
-#include <limits.h>
-#include <algorithm>
-#include <iostream>
-#include <iomanip>
-#include <stack>
-#include <string>
-#include <cstring>
-#include <vector>
-#include <map>
-#include <set>
-#include <cmath>
-#include <queue>
-#include <stdlib.h>
-#include <stdio.h>
-typedef long long ll;
-using namespace std;
 
 int n;//输入n
 int cnt;//记录解个数
@@ -76,8 +58,8 @@ int main() {
 }
 ```
 
-n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。（每个皇后不在同一行、同一列以及对角线上）
 
+n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。（每个皇后不在同一行、同一列以及对角线上）
 递归写法:
 
 1. 将棋盘存储为一个一维数组啊a[n],第i个元素表示第i行的皇后位置
