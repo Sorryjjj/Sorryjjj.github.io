@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="图"><meta name="keywords" content="图,最短路径,Prim,Dijkstra"><meta name="author" content="Jie Zhang"><meta name="copyright" content="Jie Zhang"><title>图 | 杰仔的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.8.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.8.2"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.4.0'
+} </script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="杰仔的博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E7%A7%8D%E7%89%B9%E6%AE%8A%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">几种特殊图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">2.</span> <span class="toc-text">图的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-number">2.1.</span> <span class="toc-text">邻接矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-number">2.2.</span> <span class="toc-text">邻接表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">十字链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E5%A4%9A%E9%87%8D%E8%A1%A8%EF%BC%88%E6%97%A0%E5%90%91%E5%9B%BE%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">邻接多重表（无向图）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">3.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">3.1.</span> <span class="toc-text">广度优先遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">3.2.</span> <span class="toc-text">深度优先遍历</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-number">4.</span> <span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">4.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prim%E7%AE%97%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">Prim算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kruskal%E7%AE%97%E6%B3%95"><span class="toc-number">4.3.</span> <span class="toc-text">Kruskal算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">5.</span> <span class="toc-text">最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BFS"><span class="toc-number">5.1.</span> <span class="toc-text">BFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dijkstra%E7%AE%97%E6%B3%95"><span class="toc-number">5.2.</span> <span class="toc-text">Dijkstra算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TODO"><span class="toc-number">6.</span> <span class="toc-text">TODO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Floyd%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.</span> <span class="toc-text">Floyd算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="toc-number">6.2.</span> <span class="toc-text">拓扑排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AOV"><span class="toc-number">6.2.1.</span> <span class="toc-text">AOV</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/03/12/8ZFkQA.jpg"></div><div class="author-info__name text-center">Jie Zhang</div><div class="author-info__description text-center"></div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/Sorryjjj">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">30</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">26</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">9</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://tva1.sinaimg.cn/large/008eGmZEly1gp900j27qej31hc0u0q6s.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">杰仔的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">图</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-04-08</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>图(Graph)是由顶点的有穷非空集合和顶点之间的集合组成，通常表示为G[V, E]，其中G表示一个图，V是图G的顶点集合，E是图G中边的集合</p>
+<img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpcn6v4h35j30qu0oumyw.jpg" alt="preview" style="zoom:50%;" />
+
+<ul>
+<li>无向图：微信好友</li>
+<li>有向图：微博粉丝</li>
+<li>度：以该顶点为一个端点的边数目<ul>
+<li>无向图中顶点V的度是指依附于该顶点的边的条数，记为TD(v)</li>
+<li>有向图中顶点V的度分为出度和入度<ul>
+<li>入度（ID）是以顶点v为终点的有向边的数目</li>
+<li>出度（OD）是以顶点V为起点的有向边的数目</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>路径：两个顶点之间的顶点序列</li>
+<li>回路（环）：第一个顶点和最后一个顶点相同的路径</li>
+<li>路径长度：路径上边的数目</li>
+<li>点到点的距离：最短路径或无穷（不存在路径）</li>
+<li>连通：两个顶点之间有路径</li>
+<li>强连通：有向图中的两个顶点互相连通</li>
+<li>连通图：任意两个顶点都是连通的，否则为非连通图</li>
+<li>强连通：任意两个顶点强连通</li>
+<li>子图</li>
+<li>连通分量：无向图中的极大连通子图（包含尽可能多的顶点和边）</li>
+<li>强连通分量：有向图中的极大强连通子图</li>
+<li>生成树：包含图中全部顶点的一个极小连通子图（可能会有多个）</li>
+<li>生成森林：连通分量的生成树构成生成森林</li>
+<li>权：每条边的带有某种含义的数值</li>
+<li>带权路径长度：路径权值之和</li>
+</ul>
+<h2 id="几种特殊图"><a href="#几种特殊图" class="headerlink" title="几种特殊图"></a>几种特殊图</h2><ul>
+<li>无向完全图：任意两个顶点之间都有边</li>
+<li>有向完全图：任意两个顶点之间都有方向相反的弧</li>
+<li>稀疏图</li>
+<li>稠密图</li>
+<li>树：不存在回路且连通的无向图</li>
+<li>有向树：一个顶点的入度为0，其他顶点入度为1的有向图</li>
+</ul>
+<h1 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h1><h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpcnvvv8avj30go0go74n.jpg" alt="查看源图像" style="zoom:67%;" />
+
+<p>空间复杂度：o(n^2)，适合存储稠密图</p>
+<h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpco1g32llj30pi0b4wew.jpg" alt="查看源图像" style="zoom:67%;" />
+
+<h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h3><h3 id="邻接多重表（无向图）"><a href="#邻接多重表（无向图）" class="headerlink" title="邻接多重表（无向图）"></a>邻接多重表（无向图）</h3><h1 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h1><ul>
+<li>广度优先遍历（BFS）</li>
+<li>深度优先遍历（DFS）</li>
+</ul>
+<h2 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h2><p>从图的一个未遍历的节点出发，先遍历这个节点的相邻节点，再依次遍历每个相邻节点的相邻节点</p>
+<ol>
+<li>若树非空，则根结点入队</li>
+<li>若队列非空，队头元素出队并访问，同时将该元素的子元素依次入队</li>
+<li>重复2直到队列为空</li>
+</ol>
+<h2 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h2><p>从图中一个未访问的顶点 V 开始，沿着一条路一直走到底，然后从这条路尽头的节点回退到上一个节点，再从另一条路开始走到底…，不断递归重复此过程，直到所有的顶点都遍历完成，它的特点是不撞南墙不回头，先走完一条路，再换一条路继续走</p>
+<h1 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>针对带权连通无向图</p>
+<p>MST（Minimum Spanning Tree）：边的权值之和最小的生成树</p>
+<h2 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h2><p>丛某个顶点开始构建，每次将代价最小的新顶点纳入生成树，直到所有顶点都纳入为止</p>
+<ol>
+<li>从图中找第一个起始顶点v0，作为生成树的第一个顶点，然后从这个顶点到其他顶点的所有边中选一条权值最小的边。然后把这条边的另一个顶点v和这条边加入到生成树中。</li>
+<li>对剩下的其他所有顶点，分别检查这些顶点与顶点v的权值是否比这些顶点在lowcost数组中对应的权值小，如果更小，则用较小的权值更新lowcost数组。</li>
+<li>从更新后的lowcost数组中继续挑选权值最小而且不在生成树中的边，然后加入到生成树。</li>
+<li>反复执行②③直到所有所有顶点都加入到生成树中。</li>
+</ol>
+<p>双重循环，外层循环次数为n-1，内层并列的两个循环次数都是n。故普利姆算法时间复杂度为O(n2) 而且时间复杂度只和n有关，所以适合稠密图</p>
+<h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><p>每次选择一条权值最小的变，使这条边的两头连通（原本已经连通的就不选），直到所有结点都连通</p>
+<p>克鲁斯卡尔算法操作分为对边的权值排序部分和一个单重for循环，它们是并列关系，由于排序耗费时间大于单重循环，所以克鲁斯卡尔算法的主要时间耗费在排序上。排序和图中边的数量有关系，所以适合稀疏图</p>
+<h1 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h1><h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>BFS+队列+dist[]+path[]</p>
+<p>只适用于无权图或者各边权值都相同的图</p>
+<h2 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h2><ul>
+<li>final []：标记各顶点是否找到最短路径</li>
+<li>dist []：最短路径长度</li>
+<li>path []：路径上的前驱</li>
+</ul>
+<h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a><strong>TODO</strong></h1><h2 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h2><p>动态规划</p>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><h3 id="AOV"><a href="#AOV" class="headerlink" title="AOV"></a>AOV</h3><p>果我们把每个环节看成图中一个顶点，在这样一个有向图中，用顶点表示活动，用弧表示活动之间的优先关系，那么这样的有向图称为AOV网(Activity On Vertex)</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Jie Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://jiezai.online/2021/04/08/图/">http://jiezai.online/2021/04/08/图/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://jiezai.online">杰仔的博客</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9B%BE/">图</a><a class="post-meta__tags" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">最短路径</a><a class="post-meta__tags" href="/tags/Prim/">Prim</a><a class="post-meta__tags" href="/tags/Dijkstra/">Dijkstra</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://s1.ax1x.com/2020/03/12/8ZmTgO.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="next-post pull-right"><a href="/2021/04/07/%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/"><span>树与二叉树</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '7592534c7c52beaeac37',
+  clientSecret: 'd235cc6ca2447a48558833937d867ab824dfcfaf',
+  repo: 'Sorryjjj.github.io',
+  owner: 'Sorryjjj',
+  admin: 'Sorryjjj',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://tva1.sinaimg.cn/large/008eGmZEly1gp900j27qej31hc0u0q6s.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2021 By Jie Zhang</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.8.2"></script><script src="/js/fancybox.js?version=1.8.2"></script><script src="/js/sidebar.js?version=1.8.2"></script><script src="/js/copy.js?version=1.8.2"></script><script src="/js/fireworks.js?version=1.8.2"></script><script src="/js/transition.js?version=1.8.2"></script><script src="/js/scroll.js?version=1.8.2"></script><script src="/js/head.js?version=1.8.2"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

@@ -6,7 +6,7 @@
   <link href="http://jiezai.online/atom.xml" rel="self"/>
   
   <link href="http://jiezai.online/"/>
-  <updated>2021-04-07T15:09:01.198Z</updated>
+  <updated>2021-04-08T14:34:45.767Z</updated>
   <id>http://jiezai.online/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图</title>
+    <link href="http://jiezai.online/2021/04/08/%E5%9B%BE/"/>
+    <id>http://jiezai.online/2021/04/08/%E5%9B%BE/</id>
+    <published>2021-04-08T13:02:03.000Z</published>
+    <updated>2021-04-08T14:34:45.767Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>图(Graph)是由顶点的有穷非空集合和顶点之间的集合组成，通常表示为G[V, E]，其中G表示一个图，V是图G的顶点集合，E是图G中边的集合</p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpcn6v4h35j30qu0oumyw.jpg" alt="preview" style="zoom:50%;" /><ul><li>无向图：微信好友</li><li>有向图：微博粉丝</li><li>度：以该顶点为一个端点的边数目<ul><li>无向图中顶点V的度是指依附于该顶点的边的条数，记为TD(v)</li><li>有向图中顶点V的度分为出度和入度<ul><li>入度（ID）是以顶点v为终点的有向边的数目</li><li>出度（OD）是以顶点V为起点的有向边的数目</li></ul></li></ul></li><li>路径：两个顶点之间的顶点序列</li><li>回路（环）：第一个顶点和最后一个顶点相同的路径</li><li>路径长度：路径上边的数目</li><li>点到点的距离：最短路径或无穷（不存在路径）</li><li>连通：两个顶点之间有路径</li><li>强连通：有向图中的两个顶点互相连通</li><li>连通图：任意两个顶点都是连通的，否则为非连通图</li><li>强连通：任意两个顶点强连通</li><li>子图</li><li>连通分量：无向图中的极大连通子图（包含尽可能多的顶点和边）</li><li>强连通分量：有向图中的极大强连通子图</li><li>生成树：包含图中全部顶点的一个极小连通子图（可能会有多个）</li><li>生成森林：连通分量的生成树构成生成森林</li><li>权：每条边的带有某种含义的数值</li><li>带权路径长度：路径权值之和</li></ul><h2 id="几种特殊图"><a href="#几种特殊图" class="headerlink" title="几种特殊图"></a>几种特殊图</h2><ul><li>无向完全图：任意两个顶点之间都有边</li><li>有向完全图：任意两个顶点之间都有方向相反的弧</li><li>稀疏图</li><li>稠密图</li><li>树：不存在回路且连通的无向图</li><li>有向树：一个顶点的入度为0，其他顶点入度为1的有向图</li></ul><h1 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h1><h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpcnvvv8avj30go0go74n.jpg" alt="查看源图像" style="zoom:67%;" /><p>空间复杂度：o(n^2)，适合存储稠密图</p><h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gpco1g32llj30pi0b4wew.jpg" alt="查看源图像" style="zoom:67%;" /><h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h3><h3 id="邻接多重表（无向图）"><a href="#邻接多重表（无向图）" class="headerlink" title="邻接多重表（无向图）"></a>邻接多重表（无向图）</h3><h1 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h1><ul><li>广度优先遍历（BFS）</li><li>深度优先遍历（DFS）</li></ul><h2 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h2><p>从图的一个未遍历的节点出发，先遍历这个节点的相邻节点，再依次遍历每个相邻节点的相邻节点</p><ol><li>若树非空，则根结点入队</li><li>若队列非空，队头元素出队并访问，同时将该元素的子元素依次入队</li><li>重复2直到队列为空</li></ol><h2 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h2><p>从图中一个未访问的顶点 V 开始，沿着一条路一直走到底，然后从这条路尽头的节点回退到上一个节点，再从另一条路开始走到底…，不断递归重复此过程，直到所有的顶点都遍历完成，它的特点是不撞南墙不回头，先走完一条路，再换一条路继续走</p><h1 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>针对带权连通无向图</p><p>MST（Minimum Spanning Tree）：边的权值之和最小的生成树</p><h2 id="Prim算法"><a href="#Prim算法" class="headerlink" title="Prim算法"></a>Prim算法</h2><p>丛某个顶点开始构建，每次将代价最小的新顶点纳入生成树，直到所有顶点都纳入为止</p><ol><li>从图中找第一个起始顶点v0，作为生成树的第一个顶点，然后从这个顶点到其他顶点的所有边中选一条权值最小的边。然后把这条边的另一个顶点v和这条边加入到生成树中。</li><li>对剩下的其他所有顶点，分别检查这些顶点与顶点v的权值是否比这些顶点在lowcost数组中对应的权值小，如果更小，则用较小的权值更新lowcost数组。</li><li>从更新后的lowcost数组中继续挑选权值最小而且不在生成树中的边，然后加入到生成树。</li><li>反复执行②③直到所有所有顶点都加入到生成树中。</li></ol><p>双重循环，外层循环次数为n-1，内层并列的两个循环次数都是n。故普利姆算法时间复杂度为O(n2) 而且时间复杂度只和n有关，所以适合稠密图</p><h2 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h2><p>每次选择一条权值最小的变，使这条边的两头连通（原本已经连通的就不选），直到所有结点都连通</p><p>克鲁斯卡尔算法操作分为对边的权值排序部分和一个单重for循环，它们是并列关系，由于排序耗费时间大于单重循环，所以克鲁斯卡尔算法的主要时间耗费在排序上。排序和图中边的数量有关系，所以适合稀疏图</p><h1 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h1><h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>BFS+队列+dist[]+path[]</p><p>只适用于无权图或者各边权值都相同的图</p><h2 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h2><ul><li>final []：标记各顶点是否找到最短路径</li><li>dist []：最短路径长度</li><li>path []：路径上的前驱</li></ul><h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a><strong>TODO</strong></h1><h2 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h2><p>动态规划</p><h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><h3 id="AOV"><a href="#AOV" class="headerlink" title="AOV"></a>AOV</h3><p>果我们把每个环节看成图中一个顶点，在这样一个有向图中，用顶点表示活动，用弧表示活动之间的优先关系，那么这样的有向图称为AOV网(Activity On Vertex)</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;图&quot;&gt;&lt;a href=&quot;#图&quot; class=&quot;headerlink&quot; title=&quot;图&quot;&gt;&lt;/a&gt;图&lt;/h1&gt;&lt;h2 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h2&gt;&lt;p</summary>
+      
+    
+    
+    
+    <category term="数据结构" scheme="http://jiezai.online/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="图" scheme="http://jiezai.online/tags/%E5%9B%BE/"/>
+    
+    <category term="最短路径" scheme="http://jiezai.online/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/"/>
+    
+    <category term="Prim" scheme="http://jiezai.online/tags/Prim/"/>
+    
+    <category term="Dijkstra" scheme="http://jiezai.online/tags/Dijkstra/"/>
+    
+  </entry>
   
   <entry>
     <title>树与二叉树</title>
@@ -500,27 +530,6 @@
     
     
     <category term="Java" scheme="http://jiezai.online/categories/Java/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>n皇后</title>
-    <link href="http://jiezai.online/2020/10/20/n%E7%9A%87%E5%90%8E/"/>
-    <id>http://jiezai.online/2020/10/20/n%E7%9A%87%E5%90%8E/</id>
-    <published>2020-10-20T11:47:52.000Z</published>
-    <updated>2020-10-20T12:06:42.128Z</updated>
-    
-    <content type="html"><![CDATA[<p>n皇后问题</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;<span class="comment">//输入n</span></span><br><span class="line"><span class="keyword">int</span> cnt;<span class="comment">//记录解个数</span></span><br><span class="line"><span class="keyword">int</span> vis[<span class="number">12</span>];<span class="comment">//记录皇后位置</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否满足条件</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> row)</span> </span>&#123;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; row; i++) &#123;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">abs</span>(vis[row] - vis[i]) == <span class="built_in">abs</span>(row-i) || vis[row] == vis[i]) &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归摆放皇后</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> row)</span> </span>&#123;</span><br><span class="line">  <span class="comment">//遍历列的位置</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">vis[row] = i;</span><br><span class="line"><span class="keyword">if</span> (check(row)) &#123;</span><br><span class="line"><span class="keyword">if</span> (row == n) &#123;<span class="comment">//到达最后一行</span></span><br><span class="line">cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">dfs(row + <span class="number">1</span>);<span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">11</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这里hdu-2553需要打表避免超时</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">11</span>; i++) &#123;</span><br><span class="line">cnt = <span class="number">0</span>;</span><br><span class="line">n = i;</span><br><span class="line">dfs(<span class="number">1</span>);</span><br><span class="line">arr[i] = cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (<span class="built_in">cin</span>&gt;&gt; n &amp;&amp; n)</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; arr[n] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。（每个皇后不在同一行、同一列以及对角线上）<br>递归写法:</p><ol><li>将棋盘存储为一个一维数组啊a[n],第i个元素表示第i行的皇后位置</li><li>遍历下一行位置,判断是否满足条件,是则记录一个解,直到走到最后一行</li><li>冲突计算: ①行列相减的绝对值相等判断是否在对角线 ②列是否相等</li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;n皇后问题&lt;/p&gt;
-&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;</summary>
-      
-    
-    
     
     
   </entry>
