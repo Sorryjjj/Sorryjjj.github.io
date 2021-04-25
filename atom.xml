@@ -6,7 +6,7 @@
   <link href="http://jiezai.online/atom.xml" rel="self"/>
   
   <link href="http://jiezai.online/"/>
-  <updated>2021-04-24T17:12:16.904Z</updated>
+  <updated>2021-04-25T10:28:11.590Z</updated>
   <id>http://jiezai.online/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 21 合并两个有序链表</title>
+    <link href="http://jiezai.online/2021/04/25/leetcode-21-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/"/>
+    <id>http://jiezai.online/2021/04/25/leetcode-21-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</id>
+    <published>2021-04-25T10:10:47.000Z</published>
+    <updated>2021-04-25T10:28:11.590Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/">合并两个有序链表</a></p><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gpw5kprdyhj30yl0u0n6x.jpg" alt="image-20210425181150836"></p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>使用一个指针迭代查找下一个较小的节点</p><p>注意需要保留头节点用于最后返回，以及有一个链表遍历完了，要将指针指向剩余所有</p><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>递归合并</p><p>每两个节点进行对比，将其中较小的作为返回值，之后比较其next节点与较大的节点</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val, next) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.next = (next===undefined ? null : next)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> mergeTwoLists = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> head = <span class="keyword">new</span> ListNode()</span><br><span class="line">    <span class="keyword">let</span> pre = head</span><br><span class="line">    <span class="keyword">while</span>(l1 != <span class="literal">null</span> &amp;&amp; l2 != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(l1.val &lt;= l2.val) &#123;</span><br><span class="line">            pre.next = l1</span><br><span class="line">            l1 = l1.next</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            pre.next = l2</span><br><span class="line">            l2 = l2.next</span><br><span class="line">        &#125;</span><br><span class="line">        pre = pre.next</span><br><span class="line">    &#125;</span><br><span class="line">    pre.next = l1 == <span class="literal">null</span> ? l2 : l1</span><br><span class="line">    <span class="keyword">return</span> head.next</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val, next) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.next = (next===undefined ? null : next)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> mergeTwoLists = <span class="function"><span class="keyword">function</span>(<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l1 == <span class="literal">null</span>) <span class="keyword">return</span> l2;</span><br><span class="line">    <span class="keyword">if</span>(l2 == <span class="literal">null</span>) <span class="keyword">return</span> l1;</span><br><span class="line">    <span class="keyword">if</span>(l1.val &lt; l2.val) &#123;</span><br><span class="line">        l1.next = mergeTwoLists(l1.next,l2);</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        l2.next = mergeTwoLists(l2.next,l1);</span><br><span class="line">        <span class="keyword">return</span> l2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/merge-two-sorted-lists/&quot;&gt;合并两</summary>
+      
+    
+    
+    
+    <category term="leetcode" scheme="http://jiezai.online/categories/leetcode/"/>
+    
+    
+    <category term="链表" scheme="http://jiezai.online/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode 27 移除元素</title>
@@ -514,31 +538,6 @@
       
       
     <summary type="html">&lt;h1 id=&quot;TCP-IP协议栈&quot;&gt;&lt;a href=&quot;#TCP-IP协议栈&quot; class=&quot;headerlink&quot; title=&quot;TCP/IP协议栈&quot;&gt;&lt;/a&gt;TCP/IP协议栈&lt;/h1&gt;&lt;h2 id=&quot;IP数据报格式&quot;&gt;&lt;a href=&quot;#IP数据报格式&quot; class=&quot;he</summary>
-      
-    
-    
-    
-    <category term="计算机网络" scheme="http://jiezai.online/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-    
-    <category term="网络层" scheme="http://jiezai.online/tags/%E7%BD%91%E7%BB%9C%E5%B1%82/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网络层</title>
-    <link href="http://jiezai.online/2021/03/15/%E7%BD%91%E7%BB%9C%E5%B1%82/"/>
-    <id>http://jiezai.online/2021/03/15/%E7%BD%91%E7%BB%9C%E5%B1%82/</id>
-    <published>2021-03-15T14:23:57.000Z</published>
-    <updated>2021-04-05T13:13:43.167Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><p>主要任务是把分组从源端传到目的端，为分组交换网上的不同主机提供通信服务</p><p>传输单位是<strong>数据报</strong></p><p>功能：</p><ul><li>路由选择与分组转发<ul><li>路由选择：按照复杂的分布式算法，根据从各相邻路由器所得到的关于整个网络拓扑的变化情况，动态改变所选择的路有</li><li>分组转发：路由器根据转发表将用户的IP数据报从合适的端口转发出去</li></ul></li><li>异构网络互联</li><li>拥塞控制<ul><li>因出现过量的分组而引起网络性能下降的现象称为拥塞</li><li>控制方法：<ul><li>开环控制：静态，在设计网络时，事先将有关发生拥塞的因素考虑周到</li><li>闭环控制：动态，事先不考虑，采用监测网络系统去见识，及时检测哪里发生了拥塞，将拥塞信息发送到合适的地方</li></ul></li></ul></li></ul><h1 id="数据交换方式"><a href="#数据交换方式" class="headerlink" title="数据交换方式"></a>数据交换方式</h1><h2 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h2><p><strong>特点：独占资源</strong></p><ol><li>建立连接（呼叫/电路建立）</li><li>通信 </li><li>释放连接（拆除电路）</li></ol><p><strong>优点</strong></p><ul><li>通信时延小</li><li>有序传输</li><li>没有冲突</li><li>实时性强</li></ul><p><strong>缺点</strong></p><ul><li>建立连接时间长</li><li>线路独占，使用效率低</li><li>灵活性差</li><li>无差错控制能力</li></ul><p>如电话网络</p><h2 id="报文交换"><a href="#报文交换" class="headerlink" title="报文交换"></a>报文交换</h2><p>报文：源应用发送的信息整体</p><p>通过交换设备进行存储转发，链路空闲时发送</p><p><strong>优点</strong></p><ul><li>无需建立连接</li><li>存储转发，动态分配线路</li><li>线路可靠性较高</li><li>线路利用率高</li><li>多目标服务</li></ul><p><strong>缺点</strong></p><ul><li>有存储转发时延</li><li>报文大小补丁，需要网络节点有较大缓存空间</li></ul><h2 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h2><p>分组：将大的数据块（报文）分割成小的数据块</p><p>相对于报文交换，存储管理更容易，但是需要传输额外的信息量，乱序到达目的主机时，要对分组排序重组</p><h2 id="虚电路"><a href="#虚电路" class="headerlink" title="虚电路"></a>虚电路</h2><p>一条源主机到目的主机类似于电路的路径（逻辑链接），路径上所有节点都要维持这条虚电路的建立，都维持一张虚电路表，每一项纪录了一个打开的虚电路的信息</p><p>每个分组携带虚电路号</p><p>虚电路将数据报方式和电路交换方式结合，以发挥两者优点</p><h1 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h1><p>路由表/转发表</p><table><thead><tr><th>目的网络IP地址</th><th>子网掩码</th><th>下一跳IP地址</th><th>接口</th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table><p>最佳路由：相对于某一种特定要求下得出的较为合理的选择</p><h2 id="静态路由算法"><a href="#静态路由算法" class="headerlink" title="静态路由算法"></a>静态路由算法</h2><p>管理员手工配置路由信息</p><p>在负荷稳定、拓扑变化不大的网络中运行效果好，广泛应用于高度安全性的军事网络和较小的商业网络</p><p>缺点：路由更新慢，不适用大型网络</p><h2 id="动态路由算法"><a href="#动态路由算法" class="headerlink" title="动态路由算法"></a>动态路由算法</h2><p>自适应路由算法</p><p>路由器之间彼此交换信息，按照路由算法优化出路由表项</p><p>优点：路由更新快，适用大型网络，及时响应链路费用或网络拓扑变化</p><p>缺点：算法复杂，增加网络负担</p><ul><li>全局性：链路状态路由算法 OSPF （所有路由器掌握完整的网络拓扑和链路费用信息）</li><li>分散性：距离向量路由算法 RIP（路由器只掌握物理项链的邻居及链路费用）</li></ul><h2 id="层次路由"><a href="#层次路由" class="headerlink" title="层次路由"></a>层次路由</h2><p>自治系统AS：在单一的技术管理下的一组路由器</p><p>路由选择协议：</p><ul><li>内部网关协议IGP：单个AS内使用 RIP OSPF</li><li>外部网关协议EGP：AS之间使用</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;网络层&quot;&gt;&lt;a href=&quot;#网络层&quot; class=&quot;headerlink&quot; title=&quot;网络层&quot;&gt;&lt;/a&gt;网络层&lt;/h1&gt;&lt;p&gt;主要任务是把分组从源端传到目的端，为分组交换网上的不同主机提供通信服务&lt;/p&gt;
-&lt;p&gt;传输单位是&lt;strong&gt;数据报&lt;/stron</summary>
       
     
     
