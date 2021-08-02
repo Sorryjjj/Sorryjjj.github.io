@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="基础"><meta name="keywords" content=""><meta name="author" content="Jie Zhang"><meta name="copyright" content="Jie Zhang"><title>基础 | 杰仔的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.8.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.8.2"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.4.0'
+} </script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="杰仔的博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-CSS"><span class="toc-number">1.</span> <span class="toc-text">HTML CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS"><span class="toc-number">2.</span> <span class="toc-text">JS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-number">3.</span> <span class="toc-text">缓存</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#http"><span class="toc-number">4.</span> <span class="toc-text">http</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">5.</span> <span class="toc-text">运行环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-number">5.1.</span> <span class="toc-text">页面加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">5.2.</span> <span class="toc-text">性能优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8"><span class="toc-number">5.3.</span> <span class="toc-text">安全</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">问题</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/03/12/8ZFkQA.jpg"></div><div class="author-info__name text-center">Jie Zhang</div><div class="author-info__description text-center"></div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/Sorryjjj">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">55</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">40</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">13</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://tva1.sinaimg.cn/large/008eGmZEly1gp900j27qej31hc0u0q6s.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">杰仔的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">基础</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-07-25</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>Css</p>
+<ul>
+<li>布局</li>
+<li>定位</li>
+<li>移动端</li>
+</ul>
+<p>ES</p>
+<ul>
+<li>原型</li>
+<li>作用域 闭包</li>
+<li>异步 单线程</li>
+</ul>
+<p>Web</p>
+<ul>
+<li>DOM BOM</li>
+<li>ajax 跨域</li>
+<li>事件 存储</li>
+</ul>
+<p>开发环境</p>
+<ul>
+<li>版本管理</li>
+<li>调试抓包</li>
+<li>打包构建</li>
+</ul>
+<p>运行环境</p>
+<ul>
+<li>页面渲染</li>
+<li>性能优化</li>
+<li>web安全</li>
+</ul>
+<p>网络</p>
+<ul>
+<li>headers</li>
+<li>Restful API</li>
+<li>缓存策略</li>
+</ul>
+<h1 id="HTML-CSS"><a href="#HTML-CSS" class="headerlink" title="HTML CSS"></a>HTML CSS</h1><ul>
+<li>html语义化：html结构化，代码易读，利于SEO</li>
+<li>块级元素 内联元素<ul>
+<li>块级：独占一行<ul>
+<li>display: block/table; div h1 h2 table ul ol p</li>
+</ul>
+</li>
+<li>内联：不会独占一行<ul>
+<li>display:inline / inline-block; span img input button</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>盒模型的宽度<ul>
+<li>offsetWidth = 内容宽度 + 内边距 + 边框</li>
+<li>box-sizing:border-box; 不会被padding撑开</li>
+</ul>
+</li>
+<li>margin纵向重叠<ul>
+<li>在标准文档流中，竖直方向（是<strong>竖直方向</strong>，<strong>水平方向</strong>的<strong>不会出现</strong>塌陷现象）的margin会出现叠加现象，即较大的margin会覆盖掉较小的margin，竖直方向的两个盒子中间只有一个较大的margin]</li>
+<li><strong>垂直之间塌陷的原则是以两盒子最大的外边距为准</strong></li>
+<li>相邻元素的margin-top和margin-bottom会发生重叠</li>
+<li>空白内容的p标签也会重叠</li>
+</ul>
+</li>
+<li>margin负值<ul>
+<li>margin-top和margin-left设置负值的话，元素会分别向上或向左移动；</li>
+<li>margin-right设置负值，右侧元素左移，自身不受影响；</li>
+<li>margin-bottom设置负值，下方元素上移，自身不受影响；</li>
+</ul>
+</li>
+<li>BFC<ul>
+<li>块级格式化上下文 block format context</li>
+<li>一块独立渲染区域，内部元素的渲染不影响边界以外的元素</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25321647">BFC</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36422236/article/details/88763187">bfc</a></li>
+</ul>
+</li>
+<li>float clearfix</li>
+<li>flex<ul>
+<li>Flex-direction</li>
+<li>Justify-content</li>
+<li>Align-items</li>
+<li>flex-wrap</li>
+<li>align-self</li>
+<li></li>
+</ul>
+</li>
+<li>absolute relative</li>
+<li>居中对齐</li>
+<li>line-height</li>
+<li>rem em px</li>
+<li>响应式实现</li>
+<li>CSS3 动画</li>
+<li></li>
+</ul>
+<h1 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h1><ul>
+<li><p>typeof</p>
+<ul>
+<li>判断所有值类型</li>
+<li>判断函数</li>
+<li>判断是否时引用类型</li>
+</ul>
+</li>
+<li><p>=== ==</p>
+</li>
+<li><p>值类型 引用类型</p>
+<ul>
+<li>Undefined number string boolean symbol</li>
+<li>Object array null function</li>
+</ul>
+</li>
+<li><p>深拷贝</p>
+<ul>
+<li>```<br>function deepCopy(obj1) {<pre><code>var obj2 = Array.isArray(obj1) ? [] : &#123;&#125;;
+if (obj1 &amp;&amp; typeof obj1 === &quot;object&quot;) &#123;
+    for (var i in obj1) &#123;
+        var prop = obj1[i]; // 避免相互引用造成死循环，如obj1.a=obj
+        if (prop == obj1) &#123;
+            continue;
+        &#125;
+        if (obj1.hasOwnProperty(i)) &#123;
+            // 如果子属性为引用数据类型，递归复制
+            if (prop &amp;&amp; typeof prop === &quot;object&quot;) &#123;
+                obj2[i] = (prop.constructor === Array) ? [] : &#123;&#125;;
+                arguments.callee(prop, obj2[i]); // 递归调用
+            &#125; else &#123;
+                // 如果是基本数据类型，只是简单的复制
+                obj2[i] = prop;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+return obj2;
+</code></pre>
+}<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 原型和原型链</span><br><span class="line">  - 创建一个函数的时候，系统就会自动分配一个 &#96;prototype&#96;属性，可以用来存储可以让所有实例共享的属性和方法</span><br><span class="line">  - 每一个构造函数都拥有一个 &#96;prototype&#96; 属性，这个属性指向一个对象，也就是原型对象</span><br><span class="line">  - 原型对象默认拥有一个 &#96;constructor&#96; 属性，指向指向它的那个构造函数</span><br><span class="line">  - 每个对象都拥有一个隐藏的属性 &#96;__proto__&#96;，指向它的原型对象</span><br><span class="line">- 作用域和闭包</span><br><span class="line">  - 全局作用域</span><br><span class="line">  - 函数作用域</span><br><span class="line">  - 块级作用域</span><br><span class="line">  - 闭包：函数作为返回值或者参数传递，自由变量查找，从函数被定义的地方开始</span><br><span class="line">    - 隐藏数据</span><br><span class="line">- this</span><br><span class="line">  - 在函数执行时定义</span><br><span class="line">- 异步和单线程</span><br><span class="line"></span><br><span class="line">## event loop</span><br><span class="line"></span><br><span class="line">计算机系统的一种运行机制，js采用这种机制，来解决单线程的一些问题</span><br><span class="line"></span><br><span class="line">- 事件循环</span><br><span class="line">- js单线程</span><br><span class="line">- 异步基于回调实现</span><br><span class="line">- event loop就是异步回调的实现原理</span><br><span class="line"></span><br><span class="line">js执行顺序</span><br><span class="line"></span><br><span class="line">- 逐行执行</span><br><span class="line">- 报错则停止</span><br><span class="line">- 先执行同步代码，再执行异步代码</span><br><span class="line"></span><br><span class="line">（1）所有同步任务都在主线程上执行，形成一个[执行栈](https:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2013&#x2F;11&#x2F;stack.html)（execution context stack）。</span><br><span class="line"></span><br><span class="line">（2）主线程之外，还存在一个&quot;任务队列&quot;（task queue）。只要异步任务有了运行结果，就在&quot;任务队列&quot;之中放置一个事件。</span><br><span class="line"></span><br><span class="line">（3）一旦&quot;执行栈&quot;中的所有同步任务执行完毕，系统就会读取&quot;任务队列&quot;，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</span><br><span class="line"></span><br><span class="line">（4）主线程不断重复上面的第三步。</span><br><span class="line"></span><br><span class="line">## 宏任务 微任务</span><br><span class="line"></span><br><span class="line">- 宏任务</span><br><span class="line"></span><br><span class="line">  - (macro)task，可以理解是每次执行栈执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）</span><br><span class="line"></span><br><span class="line">  - 浏览器为了能够使得JS内部(macro)task与DOM任务能够有序的执行，会在一个(macro)task执行结束后，在下一个(macro)task 执行开始前，对页面进行重新渲染</span><br><span class="line"></span><br><span class="line">  - 包括</span><br><span class="line"></span><br><span class="line">    - &#96;&#96;&#96;text</span><br><span class="line">      script(整体代码)</span><br><span class="line">      setTimeout</span><br><span class="line">      setInterval</span><br><span class="line">      I&#x2F;O</span><br><span class="line">      UI交互事件</span><br><span class="line">      postMessage</span><br><span class="line">      MessageChannel</span><br><span class="line">      setImmediate(Node.js 环境)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>微任务</p>
+<ul>
+<li><p>microtask,可以理解是在当前 task 执行结束后立即执行的任务。也就是说，在当前task任务后，下一个task之前，在渲染之前</p>
+</li>
+<li><p>包括</p>
+<ul>
+<li>```text<br>Promise.then<br>Object.observe<br>MutaionObserver<br>process.nextTick(Node.js 环境)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">遇到同步任务时，在主线程立刻执行该任务。</span><br><span class="line"></span><br><span class="line">此时主线程上有一个执行栈（execution context stack），所有同步代码会按顺序执行。</span><br><span class="line"></span><br><span class="line">遇到异步任务时，异步任务会进入到Event Table，当异步任务有结果后，将相对应的回调函数进行注册，放入事件队列（Event Queue）；（异步的宏任务有结果后，会放入宏任务事件队列；异步的微任务有结果后，会放入微任务事件队列；）</span><br><span class="line"></span><br><span class="line">（1）主线程从上到下依次执行所有同步任务</span><br><span class="line">（2）主线程读取微任务事件队列，若存在微任务，则依次执行所有微任务</span><br><span class="line">（3）主线程读取宏任务事件队列，若存在宏任务，则依次执行所有宏任务</span><br><span class="line">（4）依次重复第2步和第3步，直到清空微任务事件队列和宏任务事件队列</span><br><span class="line"></span><br><span class="line">## promise</span><br><span class="line"></span><br><span class="line">- 三种状态，状态不可逆</span><br><span class="line">  - pending 不会触发then和catch</span><br><span class="line">  - resolve 触发then</span><br><span class="line">  - reject 触发catch</span><br><span class="line">- then 正常返回resolved，里面报错的话则返回rejected</span><br><span class="line">- catch 正常返回resolved 里面有报错则返回rejected</span><br><span class="line"></span><br><span class="line"># BOM</span><br><span class="line"></span><br><span class="line">- nvaigator 浏览器信息</span><br><span class="line">  - userAgent</span><br><span class="line">- screen</span><br><span class="line">  - 屏幕信息</span><br><span class="line">- location</span><br><span class="line">  - url信息</span><br><span class="line">- History</span><br><span class="line">  - 路由</span><br><span class="line"></span><br><span class="line"># XmlHttpRequest</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;js</span><br><span class="line">const xhr &#x3D; new XmlHttpRequets()</span><br><span class="line">xhr.open(&quot;GET&quot;,&quot;&#x2F;api&quot;,false)</span><br><span class="line">xhr.onreadystatechange &#x3D; function () &#123;</span><br><span class="line">  if(xhr.readyState &#x3D;&#x3D;&#x3D; 4) &#123;</span><br><span class="line">    if(xhr.status &#x3D;&#x3D;&#x3D; 200) &#123;</span><br><span class="line">      &#x2F;&#x2F; success</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send(null)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><ul>
+<li>cookie 本身用于浏览器和服务端通信，被借用作为本地存储，会随着请求一同发送到服务器</li>
+<li>localStorage 永久本地存储</li>
+<li>sessionStorage 会话期间有效，关闭浏览器则删除</li>
+<li><a href="https://jiezai.online/2021/05/13/%E5%89%8D%E7%AB%AF%E7%BC%93%E5%AD%98/#%E5%88%86%E7%B1%BB">前端缓存</a></li>
+</ul>
+<h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><ul>
+<li>状态码<ul>
+<li>1xx 服务器收到请求</li>
+<li>2xx 请求成功</li>
+<li>3xx 重定向 浏览器自动处理</li>
+<li>4xx 客户端错误</li>
+<li>5xx 服务端错误</li>
+</ul>
+</li>
+<li>headers</li>
+<li>缓存</li>
+</ul>
+<h1 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h1><h2 id="页面加载过程"><a href="#页面加载过程" class="headerlink" title="页面加载过程"></a>页面加载过程</h2><p>从输入url到渲染出页面的整个过程</p>
+<ul>
+<li>输入url</li>
+<li>dns解析：域名解析为IP地址</li>
+<li>TCP连接</li>
+<li>发起http请求</li>
+<li>服务器处理请求并返回</li>
+<li>渲染页面<ul>
+<li>解析HTML，构建DOM树</li>
+<li>解析CSS，生成CSS规则树</li>
+<li>合并DOM树和CSS规则树，生成render树</li>
+<li>布局render树</li>
+<li>绘制render数、树，即绘制页面像素信息</li>
+<li>GPU将各层合成，结果呈现在浏览器窗口中。</li>
+</ul>
+</li>
+<li>断开链接</li>
+</ul>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p>减少资源体积 压缩代码</p>
+<p>减少访问次数 合并代码 缓存</p>
+<p>CDN</p>
+<p>css head js放最下面</p>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><p>xss</p>
+<p>xsrf</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ul>
+<li>var let const<ul>
+<li>var 变量提升 </li>
+<li>let const 块级作用域</li>
+</ul>
+</li>
+<li>typeof<ul>
+<li>值类型</li>
+<li>object</li>
+<li>function</li>
+</ul>
+</li>
+<li>类型转换<ul>
+<li>强制：parseInt parseFloat toString</li>
+<li>隐式： if 逻辑运算 == +</li>
+</ul>
+</li>
+<li>深度比较 模拟 lodash isEqual</li>
+<li>split join 区别</li>
+<li>slice splice</li>
+<li>Call apply <ul>
+<li>参数分开</li>
+</ul>
+</li>
+<li>事件代理 委托</li>
+<li>闭包</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Jie Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://jiezai.online/2021/07/25/基础/">http://jiezai.online/2021/07/25/基础/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://jiezai.online">杰仔的博客</a>！</span></div></div><div class="post-meta__tag-list"></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://s1.ax1x.com/2020/03/12/8ZmTgO.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2021/07/25/vue-%E5%9F%BA%E7%A1%80/"><i class="fa fa-chevron-left">  </i><span>vue 基础</span></a></div><div class="next-post pull-right"><a href="/2021/07/24/webpack/"><span>webpack</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '7592534c7c52beaeac37',
+  clientSecret: 'd235cc6ca2447a48558833937d867ab824dfcfaf',
+  repo: 'Sorryjjj.github.io',
+  owner: 'Sorryjjj',
+  admin: 'Sorryjjj',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://tva1.sinaimg.cn/large/008eGmZEly1gp900j27qej31hc0u0q6s.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2021 By Jie Zhang</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.8.2"></script><script src="/js/fancybox.js?version=1.8.2"></script><script src="/js/sidebar.js?version=1.8.2"></script><script src="/js/copy.js?version=1.8.2"></script><script src="/js/fireworks.js?version=1.8.2"></script><script src="/js/transition.js?version=1.8.2"></script><script src="/js/scroll.js?version=1.8.2"></script><script src="/js/head.js?version=1.8.2"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
