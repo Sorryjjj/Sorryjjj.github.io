@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="js运行原理"><meta name="keywords" content=""><meta name="author" content="Jie Zhang"><meta name="copyright" content="Jie Zhang"><title>js运行原理 | 杰仔的博客</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.8.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.8.2"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '5.4.0'
+} </script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="杰仔的博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8"><span class="toc-number">1.</span> <span class="toc-text">浏览器内核</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JS%E5%BC%95%E6%93%8E"><span class="toc-number">2.</span> <span class="toc-text">JS引擎</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#V8%E5%BC%95%E6%93%8E"><span class="toc-number">3.</span> <span class="toc-text">V8引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E7%BB%86%E8%8A%82"><span class="toc-number">3.2.</span> <span class="toc-text">执行细节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text">代码执行过程</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2020/03/12/8ZFkQA.jpg"></div><div class="author-info__name text-center">Jie Zhang</div><div class="author-info__description text-center"></div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/Sorryjjj">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">56</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">40</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">13</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://tva1.sinaimg.cn/large/008eGmZEly1gp900j27qej31hc0u0q6s.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">杰仔的博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a><a class="site-page" href="/about">关于</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">js运行原理</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-11-03</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h1><p>浏览器内核分为两部分：渲染引擎；JS引擎</p>
+<p>JS引擎逐渐独立，内核更倾向于渲染引擎</p>
+<ul>
+<li>Gecko：早期被NetScape和Firefox使用</li>
+<li>Trident：微软开发，IE浏览器</li>
+<li>Webkit：苹果基于KHTML开发、开源的，用于Safari，Google Chrome之前也在使用</li>
+<li>Blink：Google基于Webkit开发，用于Chrome、Edge、Opera</li>
+</ul>
+<h1 id="JS引擎"><a href="#JS引擎" class="headerlink" title="JS引擎"></a>JS引擎</h1><p>将JavaScript代码翻译成机器代码</p>
+<ul>
+<li>SpiderMonkey：Brendan Eich开发，第一个js引擎</li>
+<li>Chakra：微软开发，IE</li>
+<li>JavascriptCore：Webkit</li>
+<li>V8：Google</li>
+</ul>
+<p>内核：负责HTML解析、布局、渲染等等相关的工作</p>
+<p>js引擎：解析、执行JavaScript代码</p>
+<h1 id="V8引擎"><a href="#V8引擎" class="headerlink" title="V8引擎"></a>V8引擎</h1><ul>
+<li>V8是用C ++编写的Google开源高性能JavaScript和WebAssembly引擎，它用于Chrome和Node.js等</li>
+<li>它实现ECMAScript和WebAssembly，并在Windows 7或更高版本，macOS 10.12+和使用x64，IA-32， ARM或MIPS处理器的Linux系统上运行</li>
+<li>V8可以独立运行，也可以嵌入到任何C ++应用程序中</li>
+</ul>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>源码：<a target="_blank" rel="noopener" href="https://github.com/v8/v8">https://github.com/v8/v8</a></p>
+<p>文档：<a target="_blank" rel="noopener" href="https://v8.dev/">https://v8.dev/</a></p>
+<ul>
+<li>Parse：由js代码生成AST（抽象语法树）</li>
+<li>Ignition：解释器，将AST转化为字节码ByteCode<ul>
+<li>同时会收集TurboFan优化所需要的信息(比如函数参数的类型信息，有了类型才能进行真实的运算)</li>
+<li>如果函数只调用一次，Ignition会执行解释执行ByteCode</li>
+</ul>
+</li>
+<li>TurboFan：编译器，可以将字节码编译为CPU可以直接执行的机器码<ul>
+<li>如果一个函数被多次调用，那么就会被标记为热点函数，那么就会经过TurboFan转换成优化的机器码，提高代码的执行性能;</li>
+<li>但是，机器码实际上也会被还原为ByteCode，这是因为如果后续执行函数的过程中，类型发生了变化(比如sum函数原来执行的是 number类型，后来执行变成了string类型)，之前优化的机器码并不能正确的处理运算，就会逆向的转换成字节码</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://filescdn.proginn.com/3ab7eb5b3f88a24aeb98a19f43059261/fae32b4d579da90b03cc9ebe13c7a86a.webp"></p>
+<h2 id="执行细节"><a href="#执行细节" class="headerlink" title="执行细节"></a>执行细节</h2><ol>
+<li>Blink将源码交给V8引擎，Stream获取到源码并且进行<strong>编码转换</strong></li>
+<li>Scanner会进行<strong>词法分析</strong>(lexical analysis)，词法分析会将代码转换成tokens</li>
+<li>接下来tokens会被转换成AST树，经过Parser和PreParser<ol>
+<li>Parser就是直接将tokens转成AST树架构</li>
+<li><strong>PreParser</strong>：<ol>
+<li>并不是所有的JavaScript代码，在一开始时就会被执行。那么对所有的JavaScript代码进行解析，必然会 影响网页的运行效率</li>
+<li>所以V8引擎就实现了Lazy Parsing(延迟解析)的方案，它的作用是将不必要的函数进行预解析，也就是只解析暂 时需要的内容，而对函数的全量解析是在函数被调用时才会进行</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>生成AST树后，会被Ignition转成字节码(bytecode)，之后的过程就是代码的执行过程</li>
+</ol>
+<h2 id="代码执行过程"><a href="#代码执行过程" class="headerlink" title="代码执行过程"></a>代码执行过程</h2><ol>
+<li>在执行代码之前，会在堆内存中创建一个全局对象Global Object（GO）<ol>
+<li>所有作用域都可以访问GO</li>
+<li>包含一些全局方法和属性，如Date、Array、String、Number、setTimeout、setInterval</li>
+<li>有一个window属性指向自己</li>
+</ol>
+</li>
+<li>创建执行上下文栈（<strong>Execution Context Stack</strong>，ECS）：执行代码的调用栈<ol>
+<li>构建<strong>Global Execution Context</strong>（GEC），用于执行全局代码块</li>
+<li>GEC会被放入到ECS中执行（入栈）<ol>
+<li>在代码执行前，在parser转成AST的过程中，会将全局定义的变量、函数等加入到GlobalObject中，但是并不会赋值（作用域提升hoisting）</li>
+<li>在代码执行中，对变量赋值，或者执行其他的函数</li>
+</ol>
+</li>
+</ol>
+</li>
+<li></li>
+</ol>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Jie Zhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://jiezai.online/2021/11/03/js运行原理/">http://jiezai.online/2021/11/03/js运行原理/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://jiezai.online">杰仔的博客</a>！</span></div></div><div class="post-meta__tag-list"></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://s1.ax1x.com/2020/03/12/8ZmTgO.jpg"><div class="post-qr-code__desc">微信打赏</div></div></div><nav id="pagination"><div class="next-post pull-right"><a href="/2021/07/26/%E7%AE%97%E6%B3%95-%E5%9F%BA%E7%A1%80/"><span>算法 基础</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: '7592534c7c52beaeac37',
+  clientSecret: 'd235cc6ca2447a48558833937d867ab824dfcfaf',
+  repo: 'Sorryjjj.github.io',
+  owner: 'Sorryjjj',
+  admin: 'Sorryjjj',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://tva1.sinaimg.cn/large/008eGmZEly1gp900j27qej31hc0u0q6s.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2022 By Jie Zhang</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.8.2"></script><script src="/js/fancybox.js?version=1.8.2"></script><script src="/js/sidebar.js?version=1.8.2"></script><script src="/js/copy.js?version=1.8.2"></script><script src="/js/fireworks.js?version=1.8.2"></script><script src="/js/transition.js?version=1.8.2"></script><script src="/js/scroll.js?version=1.8.2"></script><script src="/js/head.js?version=1.8.2"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

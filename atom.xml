@@ -6,7 +6,7 @@
   <link href="http://jiezai.online/atom.xml" rel="self"/>
   
   <link href="http://jiezai.online/"/>
-  <updated>2021-07-26T03:05:17.583Z</updated>
+  <updated>2021-11-03T15:45:17.238Z</updated>
   <id>http://jiezai.online/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js运行原理</title>
+    <link href="http://jiezai.online/2021/11/03/js%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86/"/>
+    <id>http://jiezai.online/2021/11/03/js%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86/</id>
+    <published>2021-11-03T14:41:30.000Z</published>
+    <updated>2021-11-03T15:45:17.238Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h1><p>浏览器内核分为两部分：渲染引擎；JS引擎</p><p>JS引擎逐渐独立，内核更倾向于渲染引擎</p><ul><li>Gecko：早期被NetScape和Firefox使用</li><li>Trident：微软开发，IE浏览器</li><li>Webkit：苹果基于KHTML开发、开源的，用于Safari，Google Chrome之前也在使用</li><li>Blink：Google基于Webkit开发，用于Chrome、Edge、Opera</li></ul><h1 id="JS引擎"><a href="#JS引擎" class="headerlink" title="JS引擎"></a>JS引擎</h1><p>将JavaScript代码翻译成机器代码</p><ul><li>SpiderMonkey：Brendan Eich开发，第一个js引擎</li><li>Chakra：微软开发，IE</li><li>JavascriptCore：Webkit</li><li>V8：Google</li></ul><p>内核：负责HTML解析、布局、渲染等等相关的工作</p><p>js引擎：解析、执行JavaScript代码</p><h1 id="V8引擎"><a href="#V8引擎" class="headerlink" title="V8引擎"></a>V8引擎</h1><ul><li>V8是用C ++编写的Google开源高性能JavaScript和WebAssembly引擎，它用于Chrome和Node.js等</li><li>它实现ECMAScript和WebAssembly，并在Windows 7或更高版本，macOS 10.12+和使用x64，IA-32， ARM或MIPS处理器的Linux系统上运行</li><li>V8可以独立运行，也可以嵌入到任何C ++应用程序中</li></ul><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>源码：<a href="https://github.com/v8/v8">https://github.com/v8/v8</a></p><p>文档：<a href="https://v8.dev/">https://v8.dev/</a></p><ul><li>Parse：由js代码生成AST（抽象语法树）</li><li>Ignition：解释器，将AST转化为字节码ByteCode<ul><li>同时会收集TurboFan优化所需要的信息(比如函数参数的类型信息，有了类型才能进行真实的运算)</li><li>如果函数只调用一次，Ignition会执行解释执行ByteCode</li></ul></li><li>TurboFan：编译器，可以将字节码编译为CPU可以直接执行的机器码<ul><li>如果一个函数被多次调用，那么就会被标记为热点函数，那么就会经过TurboFan转换成优化的机器码，提高代码的执行性能;</li><li>但是，机器码实际上也会被还原为ByteCode，这是因为如果后续执行函数的过程中，类型发生了变化(比如sum函数原来执行的是 number类型，后来执行变成了string类型)，之前优化的机器码并不能正确的处理运算，就会逆向的转换成字节码</li></ul></li></ul><p><img src="https://filescdn.proginn.com/3ab7eb5b3f88a24aeb98a19f43059261/fae32b4d579da90b03cc9ebe13c7a86a.webp"></p><h2 id="执行细节"><a href="#执行细节" class="headerlink" title="执行细节"></a>执行细节</h2><ol><li>Blink将源码交给V8引擎，Stream获取到源码并且进行<strong>编码转换</strong></li><li>Scanner会进行<strong>词法分析</strong>(lexical analysis)，词法分析会将代码转换成tokens</li><li>接下来tokens会被转换成AST树，经过Parser和PreParser<ol><li>Parser就是直接将tokens转成AST树架构</li><li><strong>PreParser</strong>：<ol><li>并不是所有的JavaScript代码，在一开始时就会被执行。那么对所有的JavaScript代码进行解析，必然会 影响网页的运行效率</li><li>所以V8引擎就实现了Lazy Parsing(延迟解析)的方案，它的作用是将不必要的函数进行预解析，也就是只解析暂 时需要的内容，而对函数的全量解析是在函数被调用时才会进行</li></ol></li></ol></li><li>生成AST树后，会被Ignition转成字节码(bytecode)，之后的过程就是代码的执行过程</li></ol><h2 id="代码执行过程"><a href="#代码执行过程" class="headerlink" title="代码执行过程"></a>代码执行过程</h2><ol><li>在执行代码之前，会在堆内存中创建一个全局对象Global Object（GO）<ol><li>所有作用域都可以访问GO</li><li>包含一些全局方法和属性，如Date、Array、String、Number、setTimeout、setInterval</li><li>有一个window属性指向自己</li></ol></li><li>创建执行上下文栈（<strong>Execution Context Stack</strong>，ECS）：执行代码的调用栈<ol><li>构建<strong>Global Execution Context</strong>（GEC），用于执行全局代码块</li><li>GEC会被放入到ECS中执行（入栈）<ol><li>在代码执行前，在parser转成AST的过程中，会将全局定义的变量、函数等加入到GlobalObject中，但是并不会赋值（作用域提升hoisting）</li><li>在代码执行中，对变量赋值，或者执行其他的函数</li></ol></li></ol></li><li></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;浏览器内核&quot;&gt;&lt;a href=&quot;#浏览器内核&quot; class=&quot;headerlink&quot; title=&quot;浏览器内核&quot;&gt;&lt;/a&gt;浏览器内核&lt;/h1&gt;&lt;p&gt;浏览器内核分为两部分：渲染引擎；JS引擎&lt;/p&gt;
+&lt;p&gt;JS引擎逐渐独立，内核更倾向于渲染引擎&lt;/p&gt;
+&lt;ul&gt;
+&lt;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>算法 基础</title>
@@ -459,30 +482,6 @@
       
     <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/move-zeroes/&quot;&gt;移动零&lt;/a&gt;&lt;/p&gt;
 &lt;p</summary>
-      
-    
-    
-    
-    <category term="leetcode" scheme="http://jiezai.online/categories/leetcode/"/>
-    
-    
-    <category term="数组" scheme="http://jiezai.online/tags/%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 485 最大连续1的个数</title>
-    <link href="http://jiezai.online/2021/04/25/leetcode-485-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/"/>
-    <id>http://jiezai.online/2021/04/25/leetcode-485-%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/</id>
-    <published>2021-04-24T16:44:13.000Z</published>
-    <updated>2021-04-24T17:12:13.946Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/max-consecutive-ones/">485 最大连续1的个数</a></p><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gpvbd5dz5dj310a0hkmyv.jpg" alt="image-20210425004639272"></p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>一趟遍历，当值为1时记录当前连续1的个数curr，遇到0时，将max与curr比大小，并将curr置为0，当遇到下一个1时重新开始记录连续1的个数</p><p>注意，到达数组最后一个元素时，还要进行一次对比，否则当最后一个元素为1时会漏掉最后一次的max</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number[]&#125;</span> <span class="variable">nums</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findMaxConsecutiveOnes = <span class="function"><span class="keyword">function</span>(<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> max = <span class="number">0</span></span><br><span class="line">    <span class="keyword">let</span> curr = <span class="number">0</span></span><br><span class="line">    nums.forEach(<span class="function">(<span class="params">item,index</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">if</span>(item == <span class="number">1</span>) &#123;</span><br><span class="line">            curr++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(item == <span class="number">0</span> &amp;&amp; index != nums.length - <span class="number">1</span>) &#123;</span><br><span class="line">            max = <span class="built_in">Math</span>.max(max,curr)</span><br><span class="line">            curr = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        max = <span class="built_in">Math</span>.max(max,curr)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> max</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/max-consecutive-ones/&quot;&gt;485 最</summary>
       
     
     
