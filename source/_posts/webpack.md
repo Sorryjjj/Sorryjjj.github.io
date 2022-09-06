@@ -195,7 +195,7 @@ chunks:['index','vendor','common']
 
 ## 构建速度
 
-- 优化bael-loader：开启缓存，明确范围（include, exclude）
+- 优化babel-loader：开启缓存，明确范围（include, exclude）
 - IgnorePlugin：忽略第三方包指定目录，让这些指定目录不要被打包进去
 - noParse：不去解析属性值代表的库的依赖（比如打包的时候依赖了三方库（jquyer、lodash）等，而这些三方库里面没有其他依赖，可以通过配置noParse不去解析文件，提高打包效率）
 - happyPack：多进程打包
@@ -225,6 +225,38 @@ Commonjs 动态引入，执行时引入
 
 所以esm可以实现Tree-Shaking
 
+# webpack构建流程
+
+- 初始化参数：合并根据命令行参数和webpack.config.js的配置，得到最终配置
+- 开始编译：根据配置初始化complier对象，注册plugins
+- 确定入口：根据entry入口文件，开始递归解析
+- 编译模块：根据文件类型和loader配置，调用对应的loader进行处理，再进行递归处理
+- 编译过程中：插件在对应的生命周期和事件进行处理
+- 完成编译并输出：生成chunk
+- 打包：写入对应的文件目录
+
+
+
+# loader plugin
+
+loader主要用来解析和检测对应资源
+
+plugin：通过webpack内部的钩子机制，进行一些额外的工作，比如代码混淆
+
+
+
+## webpack 分包策略
+
+在 webpack 打包过程中，经常出现 `vendor.js`， `app.js` 单个文件较大的情况，这偏偏又是网页最先加载的文件，这就会使得加载时间过长，从而使得白屏时间过长，影响用户体验。所以我们需要有合理的分包策略
+
+## splitChunks
+
+
+
+
+
+
+
 # 总结
 
 - 前端为何要进行打包和构建
@@ -242,3 +274,6 @@ Commonjs 动态引入，执行时引入
   - 打包构建工具
 - 如何产出一个lib
 - 懒加载
+
+# 
+
